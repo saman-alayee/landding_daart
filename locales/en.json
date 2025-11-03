@@ -1,0 +1,168 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "menu": "Menu",
+    "faq":"Faq"
+  },
+  "hero": {
+    "title": {
+      "part1": "Boost Your Business with Cutting",
+      "part2": "Edge Digital",
+      "highlight": " Advertising Solutions"
+    },
+    "subtitle": "Experience the power of targeted Digital advertising and engage your audience with our innovative solutions.",
+    "button": "Boost Your Ads Now!"
+  },
+  "info1": {
+    "title": "No experience or big budget needed",
+    "desc": "New to online advertising? Learn how Daart Ads helps you reach your advertising goals without the high costs of traditional solutions.",
+    "imageAlt": "No experience or big budget needed"
+  },
+  "info2": {
+    "title": "Grow Your Ads Faster",
+    "desc": "Reach more customers and optimize your ads automatically using AI-powered strategies designed to maximize ROI.",
+    "imageAlt": "Grow Your Ads Faster"
+  },
+  "cardsSection": {
+    "subtitle": "Discover how Daart Ads leverages AI to supercharge your advertising campaigns with these powerful features:",
+    "title": "What we do?"
+  },
+  "cards": [
+    {
+      "title": "Banner Ads",
+      "desc": "Banner advertising is one of the most common forms of digital marketing, and Daart makes it more effective than ever."
+    },
+    {
+      "title": "In-App Ads",
+      "desc": "Reach users directly inside their favorite apps with visually engaging and interactive ad content."
+    },
+    {
+      "title": "Push Notification Ads",
+      "desc": "Deliver your message instantly with push notifications — a modern and effective way to engage your audience."
+    }
+  ],
+  "home": {
+    "customersTitle": "Some Customers Empowered by Daart Ads",
+    "faqTitle": "Frequently Asked",
+    "faqHighlight": "Questions",
+    "faqs": [
+      {
+        "question": "What is online advertising?",
+        "answer": "Online advertising refers to various types of advertising used through the internet to create brand awareness, generate interest, and sell products and services."
+      },
+      {
+        "question": "Why choose Daart Ads as your online advertising agency?",
+        "answer": "Daart Ads shows your ads on internal and external platforms, targets your desired audience, provides reporting on digital advertising campaigns, and generates real traffic to your website."
+      },
+      {
+        "question": "How do I set up a campaign in Daart Ads online advertising platform?",
+        "answer": "After completing registration on the Daart Ads website, you will enter the panel and select the desired campaign on the Create Campaign page. Your request is reviewed by experts who will contact you to launch the campaign."
+      },
+      {
+        "question": "What are the pricing strategies for online advertising?",
+        "answer": "The online advertising price solutions are variable including : CPI (cost per install), CPC (cost per click), CPM (cost per thousand impressions), and CPL (cost per lead/sale)."
+      }
+    ]
+  },
+
+  "stats": {
+    "title": "Our",
+    "highlight": "Impact in Numbers",
+    "items": [
+      { "label": "Clients" },
+      { "label": "Campaigns" },
+      { "label": "Revenue" },
+      { "label": "Awards" }
+    ]
+  },
+
+  "testimonialsSection": {
+    "title": "What Our Customers Say",
+    "highlight": "Customers Say",
+    "items": [
+      {
+        "name": "Mohammad Mousavi",
+        "position": "Digital Marketing Manager",
+        "image": "https://daartagency.com/wp-content/uploads/2021/06/snapp-food.png",
+        "quote": "Collaboration with Daart Digital Marketing Company has been full of new and pleasant experiences. The team actively participates in all campaigns, providing full support, follow-up, and interaction. They optimize campaigns and advertising by continuously analyzing data in the best possible way."
+      },
+      {
+        "name": "Mehrad Mahrooqi",
+        "position": "Digital Marketing Manager",
+        "image": "https://daartagency.com/wp-content/uploads/2025/02/اسنپ-مارکت.webp",
+        "quote": "Daart Digital Marketing Agency has been with us for a long time and has always offered suitable solutions based on our needs. After interacting with their experts, their prominent role in improving our marketing metrics is clearly visible."
+      },
+      {
+        "name": "Alireza Houshmand",
+        "position": "Business Development Manager",
+        "image": "https://daartagency.com/wp-content/uploads/2021/06/Hamrah-Card.png",
+        "quote": "Our collaboration with Hamrah Card and Daart Digital Advertising Agency has lasted three years. This continued cooperation is due to Daart's professional behavior and excellent support, making them one of the best digital marketing agencies."
+      },
+      {
+        "name": "Dana Enayati",
+        "position": "Digital Marketing Manager",
+        "image": "https://daartagency.com/wp-content/uploads/2021/06/Snapp.png",
+        "quote": "Our collaboration with Daart Internet Marketing Agency has lasted over four years. The Daart team works tirelessly to solve client problems and has a strong understanding of business needs and key performance indicators."
+      }
+    ]
+  },
+  "leadForm": {
+    "title": "Get in Touch with",
+    "highlight": "Daart Ads",
+    "subtitle": "Start your journey with AI-powered advertising today — let’s make your brand unstoppable.",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name",
+        "requireText": "*",
+        "help": "Please enter your name"
+      },
+      "lastname": {
+        "label": "last Name",
+        "placeholder": "Enter your last name",
+        "requireText": "*",
+        "help": "Please enter your last name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email",
+        "requireText": "*",
+        "help": "We will contact you at this address"
+      },
+      "company": {
+        "label": "Company Name",
+        "placeholder": "Enter your company name"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Enter your phone number"
+      },
+      "message": {
+        "label": "Your Message",
+        "placeholder": "Write your message"
+      }
+    },
+    "submitting": "Submitting...",
+    "submit": "Contact Us",
+    "successMessage": "Thank you! Your message has been sent successfully.",
+    "errorMessage": "Oops! Something went wrong. Please try again."
+  },
+  "footer": {
+    "logoAlt": "Daart Logo",
+    "contact": {
+      "title": "Contact Us",
+      "address": "Tehran, Ekhtiyariyeh, Kolahdooz St., Hafez Dead-End, Building 1, Floor 3, Unit 1",
+      "phone": "02126249297",
+      "email": "{'info@daartagency.com'}"    
+    },
+    "social": {
+      "title": "Find Us Here",
+      "linkedin": "https://ir.linkedin.com/company/daart-agency",
+      "instagram": "https://www.instagram.com/daartagency"
+    },
+    "copyright": "All material and intellectual rights of Daart website belong to Creative Future Solutions Co. (Copyright 2016 – {year})"
+  }
+}

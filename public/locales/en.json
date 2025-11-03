@@ -1,0 +1,109 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title": "Boost Your Business with Cutting Edge Digital<br />Advertising Solutions",
+    "titleHighlight": "Advertising Solutions",
+    "subtitle": "Experience the power of targeted Digital advertising and engage your audience with our innovative solutions.",
+    "button": "Boost Your Ads Now!"
+  },
+  "sections": {
+    "section1": {
+      "title": "No experience or big budget needed",
+      "description": "New to online advertising? Learn how Daart Ads helps you reach your advertising goals without the high costs of traditional solutions."
+    },
+    "section2": {
+      "title": "Grow Your Ads Faster",
+      "description": "Reach more customers and optimize your ads automatically using AI-powered strategies designed to maximize ROI."
+    },
+    "discover": {
+      "title": "Discover how Daart Ads leverages AI to supercharge your advertising campaigns with these powerful features:"
+    },
+    "whatWeDo": "What we do?",
+    "customers": "Some Customers Empowered by Daart Ads",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "titleHighlight": "Questions"
+    },
+    "stats": {
+      "title": "Our Impact in Numbers",
+      "titleHighlight": "Impact in Numbers"
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "titleHighlight": "Customers Say"
+    },
+    "contact": {
+      "title": "Get in Touch with Daart Ads",
+      "titleHighlight": "Daart Ads",
+      "subtitle": "Start your journey with AI-powered advertising today — let's make your brand unstoppable.",
+      "form": {
+        "name": "Full Name",
+        "namePlaceholder": "Jane Doe",
+        "nameHelp": "Please enter your full legal name",
+        "email": "Email Address",
+        "emailPlaceholder": "jane@example.com",
+        "emailHelp": "We'll contact you at this address",
+        "company": "Company Name",
+        "companyPlaceholder": "Daart Agency",
+        "phone": "Phone",
+        "phonePlaceholder": "+44 123 456 789",
+        "message": "Your Message",
+        "messagePlaceholder": "Tell us more about your goals...",
+        "button": "Send Message"
+      }
+    }
+  },
+  "cards": {
+    "card1": {
+      "title": "AI-Powered Targeting",
+      "description": "Advanced algorithms to reach your ideal customers with precision and efficiency."
+    },
+    "card2": {
+      "title": "Real-Time Analytics",
+      "description": "Monitor campaign performance with live data and actionable insights."
+    },
+    "card3": {
+      "title": "Automated Optimization",
+      "description": "Let our AI continuously improve your ads for maximum conversion rates."
+    },
+    "card4": {
+      "title": "Multi-Platform Ads",
+      "description": "Reach customers across all major social media and search platforms."
+    }
+  },
+  "faqs": {
+    "faq1": {
+      "question": "How does Daart Ads use AI for advertising?",
+      "answer": "Our AI analyzes customer behavior, optimizes bidding strategies, and automatically adjusts campaigns to maximize your ROI across all platforms."
+    },
+    "faq2": {
+      "question": "Do I need technical expertise to use Daart Ads?",
+      "answer": "No technical skills required! Our platform is designed for businesses of all sizes with intuitive interfaces and automated processes."
+    },
+    "faq3": {
+      "question": "What's the minimum budget required?",
+      "answer": "Start with any budget that works for your business. Our AI optimizes spending regardless of your budget size."
+    },
+    "faq4": {
+      "question": "How quickly can I see results?",
+      "answer": "Most clients see improved performance within the first week, with significant results within 30 days of campaign optimization."
+    }
+  },
+  "stats": {
+    "clients": "Happy Clients",
+    "roi": "Average ROI Increase",
+    "ads": "Ads Optimized",
+    "support": "Support Availability"
+  },
+  "validation": {
+    "required": "*",
+    "success": "Thank you! Your message has been sent successfully.",
+    "error": "Please fill in all required fields correctly."
+  }
+}
