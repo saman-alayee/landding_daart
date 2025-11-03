@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "engines": {
-    "node": "18.x"
+    "node": "18.x" 
   },
   "dependencies": {
     "@alireza-ab/vue3-persian-datepicker": "^1.0.4",
