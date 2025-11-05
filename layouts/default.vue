@@ -4,7 +4,7 @@
     <Header />
 
     <!-- Main Content -->
-    <main class="flex-1 w-full mt-24 px-4">
+    <main class="flex-1 w-full mt-24">
       <NuxtPage />
     </main>
 

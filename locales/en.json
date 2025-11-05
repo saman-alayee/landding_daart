@@ -5,7 +5,8 @@
     "services": "Services",
     "contact": "Contact",
     "menu": "Menu",
-    "faq":"Faq"
+    "faq": "Faq",
+    "getStarted": "Get Started"
   },
   "hero": {
     "title": {
@@ -22,15 +23,19 @@
     "imageAlt": "No experience or big budget needed"
   },
   "info2": {
-    "title": "Grow Your Ads Faster",
-    "desc": "Reach more customers and optimize your ads automatically using AI-powered strategies designed to maximize ROI.",
-    "imageAlt": "Grow Your Ads Faster"
+    "title": "Maximize Your Reach with Google Ads",
+    "desc": "Reach your audience at the exact moment they’re searching for your products or services. With Daart’s expert Google Ads management, your campaigns are optimized for the best ROI through strategic keyword targeting, smart bidding, and engaging ad creatives. Whether it’s Search, Display, or YouTube Ads — we ensure every click brings you closer to real results.",
+    "imageAlt": "Google Ads campaign illustration"
   },
   "cardsSection": {
     "subtitle": "Discover how Daart Ads leverages AI to supercharge your advertising campaigns with these powerful features:",
     "title": "What we do?"
   },
   "cards": [
+    {
+      "title": "Google Ads",
+      "desc": "Promote your business on Google Search and Display Network to reach users actively searching for your services."
+    },
     {
       "title": "Banner Ads",
       "desc": "Banner advertising is one of the most common forms of digital marketing, and Daart makes it more effective than ever."
@@ -42,8 +47,17 @@
     {
       "title": "Push Notification Ads",
       "desc": "Deliver your message instantly with push notifications — a modern and effective way to engage your audience."
+    },
+    {
+      "title": "Bing Ads",
+      "desc": "Expand your reach to Microsoft’s audience with targeted ads across Bing and partner sites."
+    },
+    {
+      "title": "Social Media Ads",
+      "desc": "Engage your audience on platforms like Facebook, Instagram, and LinkedIn with tailored social media campaigns."
     }
   ],
+
   "home": {
     "customersTitle": "Some Customers Empowered by Daart Ads",
     "faqTitle": "Frequently Asked",
@@ -147,8 +161,10 @@
     },
     "submitting": "Submitting...",
     "submit": "Contact Us",
+    "missingFields": "Please fill in all required fields.",
     "successMessage": "Thank you! Your message has been sent successfully.",
-    "errorMessage": "Oops! Something went wrong. Please try again."
+    "errorMessage": "Oops! Something went wrong. Please try again.",
+    "errorMessageEmail": "Please enter a valid email address."
   },
   "footer": {
     "logoAlt": "Daart Logo",
@@ -156,7 +172,7 @@
       "title": "Contact Us",
       "address": "Tehran, Ekhtiyariyeh, Kolahdooz St., Hafez Dead-End, Building 1, Floor 3, Unit 1",
       "phone": "02126249297",
-      "email": "{'info@daartagency.com'}"    
+      "email": "{'info@daartagency.com'}"
     },
     "social": {
       "title": "Find Us Here",

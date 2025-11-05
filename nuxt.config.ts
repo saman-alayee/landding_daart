@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   components: true,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-
+  ssr: false,
   runtimeConfig: {
     public: {
       apiBase: 'https://ir.daartads.com/api/v1',
