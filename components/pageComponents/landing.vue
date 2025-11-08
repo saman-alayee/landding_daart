@@ -5,10 +5,7 @@
             <HomeSections />
         </div>
 
-        <!-- 🌟 Customer Slider -->
-        <div>
-            <CustomerSections />
-        </div>
+  
 
         <!-- 🌟 Info Section 1 -->
         <div>

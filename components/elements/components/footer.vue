@@ -3,19 +3,55 @@
     class="relative overflow-hidden py-16 text-gray-700 transition-all duration-500"
     :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'"
   >
-    <!-- 🌈 Animated Gradient Background -->
+    <!-- 🌫️ Dark Mode Gradient Background (added without removing light mode) -->
     <div
-      class="absolute inset-0 bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 animate-gradient-flow"
+      class="absolute inset-0 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-neutral-900 animate-gradient-flow-dark"
+    ></div>
+    <div
+      class="absolute inset-0 dark:bg-[radial-gradient(circle_at_30%_30%,rgba(30,41,59,0.25),transparent_60%)]"
     ></div>
 
-    <!-- 💫 Floating Glows -->
-    <div class="absolute w-64 h-64 bg-blue-300/20 rounded-full blur-3xl top-0 left-0 animate-blob"></div>
+    <!-- 🌌 Dark Mode Aurora Mist Waves (added without removing light mode) -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div
+        class="absolute w-[150%] h-[200%] dark:bg-gradient-to-r dark:from-indigo-900/30 dark:via-blue-900/30 dark:to-purple-900/30 blur-3xl animate-aurora-sweep-dark"
+      ></div>
+    </div>
+
+    <!-- 🫧 Dark Mode Floating Blobs (added without removing light mode) -->
     <div
-      class="absolute w-80 h-80 bg-purple-300/25 rounded-full blur-3xl bottom-0 right-0 animate-blob animation-delay-2000"
+      class="absolute w-[30rem] h-[30rem] rounded-full blur-3xl top-0 left-0 animate-blob-dark dark:bg-indigo-900/30 hidden dark:block"
+    ></div>
+    <div
+      class="absolute w-[24rem] h-[24rem] rounded-full blur-3xl bottom-0 right-0 animate-blob-dark animation-delay-2000 dark:bg-sky-900/28 hidden dark:block"
     ></div>
 
-    <!-- 🌀 Animated Shapes -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- ✨ Dark Mode Floating Particles (added without removing light mode) -->
+    <div
+      v-for="n in 8"
+      :key="'footer-dark-particle-' + n"
+      class="absolute w-2 h-2 rounded-full animate-particle-dark hidden dark:block bg-gradient-to-r from-blue-600 to-indigo-500"
+      :style="{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${n * 0.5}s`,
+        animationDuration: `${5 + Math.random() * 4}s`,
+      }"
+    ></div>
+
+    <!-- 🎨 Your Original Light Mode Background (KEPT AS IS) -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 dark:hidden animate-gradient-flow"
+    ></div>
+
+    <!-- 💫 Your Original Light Mode Floating Glows (KEPT AS IS) -->
+    <div class="absolute w-64 h-64 bg-blue-300/20 rounded-full blur-3xl top-0 left-0 animate-blob dark:hidden"></div>
+    <div
+      class="absolute w-80 h-80 bg-purple-300/25 rounded-full blur-3xl bottom-0 right-0 animate-blob animation-delay-2000 dark:hidden"
+    ></div>
+
+    <!-- 🌀 Your Original Light Mode Animated Shapes (KEPT AS IS) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none dark:hidden">
       <div class="absolute w-8 h-8 bg-blue-400/30 rounded-full top-1/3 left-8 animate-float-slow"></div>
       <div
         class="absolute w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[20px] border-b-indigo-300/40 bottom-1/4 right-12 animate-float-medium rotate-6"
@@ -51,22 +87,22 @@
         <img
           src="/assets/image/daartLogo.png"
           :alt="$t('footer.logoAlt')"
-          class="w-36 md:w-44 transition-transform duration-500 hover:scale-110 hover:drop-shadow-lg"
+          class="w-36 md:w-44 transition-transform duration-500 hover:scale-110 hover:drop-shadow-lg "
         />
       </div>
 
       <!-- 📍 Contact Info -->
       <div data-aos="fade-up" data-aos-delay="200">
         <h3
-          class="font-semibold text-lg text-gray-800 mb-4 border-b-2 border-blue-400 inline-block pb-1"
+          class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-400 dark:border-blue-500 inline-block pb-1"
         >
           {{ $t('footer.contact.title') }}
         </h3>
-        <p class="text-sm mb-2 opacity-80">{{ $t('footer.contact.address') }}</p>
+        <p class="text-sm mb-2 opacity-80 dark:text-gray-300">{{ $t('footer.contact.address') }}</p>
         <p class="mb-1">
           <a
             :href="`tel:${$t('footer.contact.phone')}`"
-            class="hover:text-blue-600 transition-all duration-300 inline-block"
+            class="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 inline-block dark:text-gray-300"
           >
             {{ $t('footer.contact.phone') }}
           </a>
@@ -74,7 +110,7 @@
         <p>
           <a
             :href="`mailto:${$t('footer.contact.email')}`"
-            class="hover:text-blue-600 transition-all duration-300 inline-block"
+            class="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 inline-block dark:text-gray-300"
           >
             {{ $t('footer.contact.email') }}
           </a>
@@ -88,7 +124,7 @@
         :class="{'md:text-right': $i18n.locale === 'ar', 'md:text-left': $i18n.locale !== 'ar'}"
       >
         <h3 
-          class="font-semibold text-lg text-gray-800 mb-4 border-b-2 border-blue-400 inline-block pb-1"
+          class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-400 dark:border-blue-500 inline-block pb-1"
         >
           {{ $t('footer.social.title') }}
         </h3>
@@ -102,10 +138,10 @@
             class="group relative"
           >
             <div
-              class="absolute inset-0 bg-blue-300/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500"
+              class="absolute inset-0 bg-blue-300/20 dark:bg-blue-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <Linkedin
-              class="w-7 h-7 text-gray-600 group-hover:text-blue-600 transition-transform duration-500 group-hover:scale-125"
+              class="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-transform duration-500 group-hover:scale-125"
             />
           </a>
 
@@ -115,10 +151,10 @@
             class="group relative"
           >
             <div
-              class="absolute inset-0 bg-purple-300/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500"
+              class="absolute inset-0 bg-purple-300/20 dark:bg-purple-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500"
             ></div>
             <Instagram
-              class="w-7 h-7 text-gray-600 group-hover:text-pink-500 transition-transform duration-500 group-hover:scale-125"
+              class="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-transform duration-500 group-hover:scale-125"
             />
           </a>
         </div>
@@ -127,25 +163,83 @@
 
     <!-- 🌠 Bottom Line -->
     <div
-      class="relative mt-16 pt-6 border-t border-blue-200 text-center text-gray-500 text-sm z-10"
+      class="relative mt-16 pt-6 border-t border-blue-200 dark:border-gray-600 text-center text-gray-500 dark:text-gray-400 text-sm z-10"
       data-aos="fade-up"
       data-aos-delay="600"
     >
       <p class="opacity-80">
         © {{ new Date().getFullYear() }}
-        <span class="text-blue-600 font-medium">Daart Agency</span> — {{ $t('footer.rights') || 'All rights reserved.' }}
+        <span class="text-blue-600 dark:text-blue-400 font-medium">Daart Agency</span> — {{ 'All rights reserved.' }}
       </p>
     </div>
   </footer>
 </template>
-
 
 <script setup lang="ts">
 import { Linkedin, Instagram } from "lucide-vue-next";
 </script>
 
 <style scoped>
-/* 🌈 Gradient Animation */
+/* 🌈 Dark Mode Background Motion - SAME AS CUSTOMER SECTION (ADDED) */
+@keyframes gradient-flow-dark {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+.animate-gradient-flow-dark {
+    background-size: 200% 200%;
+    animation: gradient-flow-dark 16s ease infinite;
+}
+
+/* 🌌 Dark Mode Aurora Wave - SAME AS CUSTOMER SECTION (ADDED) */
+@keyframes aurora-sweep-dark {
+    0% {
+        transform: translateX(-20%) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(20%) rotate(2deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-20%) rotate(0deg);
+        opacity: 0.3;
+    }
+}
+.animate-aurora-sweep-dark {
+    animation: aurora-sweep-dark 14s ease-in-out infinite;
+}
+
+/* 🫧 Dark Mode Floating Blobs - SAME AS CUSTOMER SECTION (ADDED) */
+@keyframes blob-dark {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -40px) scale(1.1); }
+    66% { transform: translate(-40px, 30px) scale(0.9); }
+}
+.animate-blob-dark {
+    animation: blob-dark 12s infinite ease-in-out;
+    opacity: 0.4;
+}
+
+/* ✨ Dark Mode Floating Particles - SAME AS OTHER SECTIONS (ADDED) */
+@keyframes particle-dark {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-25px) scale(1.2);
+        opacity: 0.9;
+    }
+}
+.animate-particle-dark {
+    animation: particle-dark 7s ease-in-out infinite;
+}
+
+/* 🎨 Your Original Light Mode Animations (KEPT AS IS) */
 @keyframes gradient-flow {
   0% {
     background-position: 0% 50%;
@@ -162,7 +256,6 @@ import { Linkedin, Instagram } from "lucide-vue-next";
   animation: gradient-flow 8s ease infinite;
 }
 
-/* 💫 Blob Animation */
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -184,7 +277,6 @@ import { Linkedin, Instagram } from "lucide-vue-next";
   animation-delay: 2s;
 }
 
-/* 🌀 Floating Shapes Animation */
 @keyframes float-slow {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
@@ -219,7 +311,6 @@ import { Linkedin, Instagram } from "lucide-vue-next";
   animation: float-fast 4s ease-in-out infinite;
 }
 
-/* 🌊 Wave Animation */
 @keyframes wave {
   0% {
     transform: translateX(0);

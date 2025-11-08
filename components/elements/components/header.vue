@@ -1,6 +1,6 @@
 <template>
   <header class="fixed top-1 left-1/2 transform -translate-x-1/2 lg:w-1/2 w-full md:w-1/2 rounded-2xl backdrop-blur-md border-black/10 text-black z-50
-           bg-white/70 dark:bg-slate-900/60 dark:border-white/10 dark:text-white"
+        dark:border-white/10 dark:text-white"
     :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
     <div class="px-6 py-3 flex items-center justify-between">
       <!-- Logo -->
