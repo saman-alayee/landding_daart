@@ -37,6 +37,5 @@ import LeadSections from '../elements/components/leadSections.vue'
 import HomeSections from '../elements/components/homeSections.vue'
 import InfoSections from '../elements/components/infoSections.vue'
 import ServicesSections from '../elements/components/servicesSections.vue'
-import CustomerSections from '../elements/components/customerSections.vue'
 
 </script>

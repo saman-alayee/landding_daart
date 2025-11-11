@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed top-1 left-1/2 transform -translate-x-1/2 lg:w-1/2 w-full md:w-1/2 rounded-2xl backdrop-blur-md border-black/10 text-black z-50
+  <header class="fixed top-1 left-1/2 transform -translate-x-1/2 lg:w-2/3 w-full md:w-1/2 rounded-2xl backdrop-blur-md border-black/10 text-black z-50
         dark:border-white/10 dark:text-white"
     :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
     <div class="px-6 py-3 flex items-center justify-between">
@@ -9,7 +9,7 @@
       </NuxtLink>
 
       <!-- Desktop Menu -->
-      <nav class="hidden w-3/4 mt-2 md:flex justify-between font-base items-center space-x-4">
+      <nav class="hidden w-full mt-2 md:flex justify-between font-base items-center space-x-6">
         <NuxtLink :to="localePath('/#home')" class="hover:underline">
           {{ $t('header.home') }}
         </NuxtLink>

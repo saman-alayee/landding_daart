@@ -66,7 +66,7 @@
     <div class="relative z-10 max-w-4xl" data-aos="zoom-in" data-aos-duration="1000">
       <h1
         :class="[
-          'font-extrabold text-4xl lg:text-6xl leading-tight mb-6 tracking-tight drop-shadow-sm',
+          'font-extrabold text-4xl lg:text-6xl lg-2  leading-tight mb-6 tracking-tight drop-shadow-sm',
           isDark ? 'text-gray-100' : 'text-gray-800'
         ]"
       >
@@ -98,8 +98,8 @@
 
         <NuxtLink :to="localePath('/#contact')">
           <BaseButton
-            type="submit"
-            size="lg"
+            type="button"
+            
             :class="[
               'glass-button text-white shadow-lg transition-transform duration-300 hover:scale-110 backdrop-blur-lg border border-white/30 relative overflow-hidden',
               isDark
@@ -173,6 +173,7 @@ function onStorage(e: StorageEvent) {
     updateDarkFromHtml()
   }
 }
+
 </script>
 
 <style scoped>
@@ -348,5 +349,8 @@ function onStorage(e: StorageEvent) {
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
+}
+.lg-2 {
+  line-height: 1.3 !important;
 }
 </style>

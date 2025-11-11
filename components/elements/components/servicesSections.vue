@@ -50,39 +50,19 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 py-0 px-8 lg:px-24 mb-12 relative"
                 :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
-                <!-- Cards -->
-                <div v-for="(card, i) in cards" :key="i" :class="[
-                    'group relative p-8 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-3xl shadow-lg transition-all duration-700 ease-out transform hover:-translate-y-4 hover:scale-[1.05] hover:shadow-2xl animate-float',
-                    i % 4 === 1 ? '-translate-y-10' :
-                        i % 4 === 2 ? 'translate-y-10' :
-                            i % 4 === 3 ? '-translate-y-10' : ''
-                ]" :data-aos="i % 2 === 0 ? 'fade-up-right' : 'fade-up-left'" :data-aos-delay="i * 150">
-                    <!-- Glow Background -->
-                    <div
-                        class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 bg-gradient-to-r from-blue-400/30 to-purple-500/30 blur-3xl animate-glow">
-                    </div>
-
-                    <!-- Content -->
-                    <div class="relative z-10 flex flex-col items-start">
-                        <!-- Icon -->
-                        <div
-                            class="w-12 h-12 mb-5 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:scale-125 animate-pulse-slow">
-                            <img :src="card.icon" :alt="$t(`cards.${i}.title`)" class="w-6 h-6" />
-                        </div>
-
-                        <!-- Title -->
-                        <h3 :class="$i18n.locale === 'ar' ? 'text-right' : 'text-left'"
-                            class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-sky-400 transition-all duration-300">
-                            {{ $t(`cards.${i}.title`) }}
-                        </h3>
-
-                        <!-- Description -->
-                        <p :class="$i18n.locale === 'ar' ? 'text-right' : 'text-left'"
-                            class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-                            {{ $t(`cards.${i}.desc`) }}
-                        </p>
-                    </div>
-                </div>
+                
+                <!-- Using BaseHomeCard Component -->
+                <BaseHomeCard
+                    v-for="(card, i) in cards"
+                    :key="i"
+                    :title="$t(`cards.${i}.title`)"
+                    :description="$t(`cards.${i}.desc`)"
+                    :icon="card.icon"
+                    :animation-type="i % 2 === 0 ? 'fade-up-right' : 'fade-up-left'"
+                    :animation-delay="i * 150"
+                    :custom-class="getCardClass(i)"
+                    @action="handleCardAction(i)"
+                />
             </div>
         </div>
     </section>
@@ -102,9 +82,11 @@ import { useI18n } from 'vue-i18n'
 import Monitor from '~/assets/image/globe-02-1.svg'
 import Search from '~/assets/image/search-refraction.svg'
 import Users from '~/assets/image/users-02.svg'
+
+// Import the BaseHomeCard component
+import BaseHomeCard from '~/components/elements/cards/BaseHomeCard.vue'
+
 const { t: $t } = useI18n()
-import 'swiper/css';
-import 'swiper/css/pagination';
 
 onMounted(async () => {
     await nextTick()
@@ -119,13 +101,58 @@ onMounted(async () => {
 })
 
 const cards = [
-    { icon: Monitor },      // Google Ads
-    { icon: rocket },       // Banner Ads
-    { icon: chart },        // In-App Ads
-    { icon: magic },        // Push Notification Ads
-    { icon: Search },       // Bing Ads
-    { icon: Users },        // Social Media Ads
+    { 
+        icon: Monitor,
+        type: 'google-ads'
+    },      // Google Ads
+    { 
+        icon: rocket,
+        type: 'banner-ads'
+    },       // Banner Ads
+    { 
+        icon: chart,
+        type: 'in-app-ads'
+    },        // In-App Ads
+    { 
+        icon: magic,
+        type: 'push-ads'
+    },        // Push Notification Ads
+    { 
+        icon: Search,
+        type: 'bing-ads'
+    },       // Bing Ads
+    { 
+        icon: Users,
+        type: 'social-ads'
+    },        // Social Media Ads
 ]
+
+// Function to get custom classes for staggered animation
+const getCardClass = (index: number) => {
+    const classes = []
+    
+    // Staggered vertical positioning (your original effect)
+    if (index % 4 === 1) {
+        classes.push('-translate-y-10')
+    } else if (index % 4 === 2) {
+        classes.push('translate-y-10')
+    } else if (index % 4 === 3) {
+        classes.push('-translate-y-10')
+    }
+    
+    return classes.join(' ')
+}
+
+// Handle card actions
+const handleCardAction = (index: number) => {
+    const card = cards[index]
+    console.log('Card clicked:', card.type)
+    // You can add navigation or modal logic here
+    // For example:
+    // navigateTo(`/services/${card.type}`)
+    // or
+    // openServiceModal(card.type)
+}
 </script>
 
 <style scoped>

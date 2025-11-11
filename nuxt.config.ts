@@ -2,8 +2,14 @@ export default defineNuxtConfig({
   components: true,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  ssr: false,
-  runtimeConfig: {
+  ssr: true, // enable SSR
+  nitro: {
+    preset: 'node-server' // build for Node.js server
+  },
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000
+  }, runtimeConfig: {
     public: {
       apiBase: 'https://ir.daartads.com/api/v1',
       recaptchaSiteKey: '6LfG_eAqAAAAAGHmDqR3a2EBdU1zoLmB7rN4jWG0',
@@ -22,7 +28,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n'
   ],
-i18n: {
+  i18n: {
     lazy: true,
     langDir: '../locales', // ✅ must be relative to project root (not ../)
     strategy: 'prefix_except_default',
@@ -38,6 +44,6 @@ i18n: {
       { code: 'ar', iso: 'ar-AR', file: 'ar.json', dir: 'rtl', name: 'العربية' }
     ]
   },
-  
+
   plugins: ['~/plugins/toast.ts'],
 })

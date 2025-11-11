@@ -20,7 +20,8 @@
   "info1": {
     "title": "No experience or big budget needed",
     "desc": "New to online advertising? Learn how Daart Ads helps you reach your advertising goals without the high costs of traditional solutions.",
-    "imageAlt": "No experience or big budget needed"
+    "imageAlt": "No experience or big budget needed",
+    "button":"See More"
   },
   "info2": {
     "title": "Maximize Your Reach with Google Ads",
@@ -180,5 +181,127 @@
       "instagram": "https://www.instagram.com/daartagency"
     },
     "copyright": "All material and intellectual rights of Daart website belong to Creative Future Solutions Co. (Copyright 2016 – {year})"
+  },
+    "googleAds": {
+    "hero": {
+      "logoAlt": "Google Ads",
+      "title": "Google",
+      "highlighted": "Ads",
+      "subtitle": "Maximize Your ROI with Strategic Google Advertising Solutions",
+      "description": "Drive qualified traffic, increase conversions, and grow your business with our expert Google Ads management services.",
+      "ctaButton": "Start Your Campaign"
+    },
+    "overview": {
+      "title": "What is",
+      "highlighted": "Google Ads",
+      "description1": "Google Ads is Google's online advertising platform that allows businesses to display ads on Google's search engine results pages and its advertising network. With over 3.5 billion searches per day, it's one of the most powerful tools for reaching potential customers.",
+      "description2": "Our team of certified experts will help you create, manage, and optimize Google Ads campaigns that deliver measurable results and maximize your return on investment."
+    },
+    "stats": {
+      "ctr": "Click-Through Rate",
+      "roi": "ROI Increase",
+      "searches": "Daily Searches",
+      "rating": "Client Rating"
+    },
+    "features": {
+      "title": "Our",
+      "highlighted": "Google Ads Services",
+      "subtitle": "Comprehensive Google Ads solutions tailored to your business goals",
+      "list": {
+        "search": {
+          "title": "Search Advertising",
+          "description": "Appear at the top of Google search results when potential customers are actively looking for your products or services."
+        },
+        "video": {
+          "title": "Video Campaigns",
+          "description": "Engage your audience with compelling video ads on YouTube and across the Google Display Network."
+        },
+        "shopping": {
+          "title": "Shopping Ads",
+          "description": "Showcase your products directly in Google search results with high-quality images and pricing information."
+        },
+        "app": {
+          "title": "App Promotion",
+          "description": "Drive app installs and engagement with targeted campaigns across Google's mobile advertising network."
+        },
+        "display": {
+          "title": "Display Network",
+          "description": "Reach potential customers while they browse websites, use apps, or watch videos across the internet."
+        },
+        "analytics": {
+          "title": "Performance Analytics",
+          "description": "Comprehensive reporting and optimization to ensure your campaigns deliver maximum return on investment."
+        }
+      }
+    },
+    "benefits": {
+      "title": "Why Choose Our",
+      "highlighted": "Google Ads Service",
+      "description": "We don't just manage campaigns – we build strategic advertising solutions that drive real business growth.",
+      "list": {
+        "visibility": {
+          "title": "Increased Visibility",
+          "description": "Appear at the top of search results when customers are ready to buy."
+        },
+        "targeting": {
+          "title": "Targeted Audience",
+          "description": "Reach people based on their search behavior, interests, and demographics."
+        },
+        "measurable": {
+          "title": "Measurable Results",
+          "description": "Track every click, conversion, and dollar spent with detailed analytics."
+        },
+        "budgeting": {
+          "title": "Flexible Budgeting",
+          "description": "Control your spending with daily budgets and pay only for results."
+        },
+        "setup": {
+          "title": "Quick Setup",
+          "description": "Launch campaigns in days, not months, and start seeing results immediately."
+        },
+        "management": {
+          "title": "Expert Management",
+          "description": "Our certified specialists optimize campaigns for maximum performance."
+        }
+      }
+    },
+    "keyPoints": {
+      "certified": "Certified Google Ads Professionals",
+      "dataDriven": "Data-Driven Strategy Development",
+      "optimization": "Continuous Campaign Optimization",
+      "reporting": "Transparent Reporting & Analytics",
+      "accountManagement": "Dedicated Account Management",
+      "trackRecord": "Proven Track Record of Success"
+    },
+    "process": {
+      "title": "Our",
+      "highlighted": "4-Step Process",
+      "subtitle": "A systematic approach to Google Ads success",
+      "steps": {
+        "strategy": {
+          "title": "Strategy & Planning",
+          "description": "We analyze your business goals and target audience to create a customized Google Ads strategy."
+        },
+        "setup": {
+          "title": "Campaign Setup",
+          "description": "Our experts build and launch optimized campaigns with compelling ad copy and targeting."
+        },
+        "optimization": {
+          "title": "Monitoring & Optimization",
+          "description": "Continuous performance tracking and optimization to maximize your return on investment."
+        },
+        "reporting": {
+          "title": "Reporting & Growth",
+          "description": "Regular performance reports and strategic recommendations for ongoing campaign growth."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Dominate",
+      "highlighted": "Google Search",
+      "description": "Let's create a Google Ads strategy that drives real results for your business.",
+      "primaryButton": "Start Free Consultation",
+      "secondaryButton": "View Case Studies"
+    }
   }
 }

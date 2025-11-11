@@ -1,277 +1,574 @@
 <template>
-  <section
-    class="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20 px-6 overflow-hidden"
-    :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'"
+  <div
+    class="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300"
   >
-    <!-- Background Blobs -->
-    <div
-      class="absolute w-[35rem] h-[35rem] bg-blue-400/18 rounded-full blur-3xl top-[-6rem] left-[-6rem] animate-blob"
-      aria-hidden="true"
-    ></div>
-    <div
-      class="absolute w-[35rem] h-[35rem] bg-purple-400/16 rounded-full blur-3xl bottom-[-6rem] right-[-6rem] animate-blob animation-delay-2000"
-      aria-hidden="true"
-    ></div>
+    <!-- 🌟 Hero Section -->
+    <section
+      class="relative overflow-hidden min-h-[80vh] flex items-center justify-center"
+    >
+      <!-- 🌫️ Dark Mode Gradient Background -->
+      <div
+        class="absolute inset-0 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-neutral-900 animate-gradient-flow"
+      ></div>
+      <div
+        class="absolute inset-0 dark:bg-[radial-gradient(circle_at_30%_30%,rgba(30,41,59,0.25),transparent_60%)]"
+      ></div>
 
-    <!-- HERO -->
-    <div class="relative max-w-4xl mx-auto text-center mb-16 z-10" data-aos="fade-down">
-      <h1 class="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 mb-4">
-        Web Development
-      </h1>
-      <p class="text-gray-700 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-        We build lightning-fast, secure, and modern websites that elevate your brand and deliver measurable business
-        results — with beautiful interfaces, bulletproof performance, and SEO-friendly structure.
-      </p>
-
-      <div class="mt-8 flex justify-center gap-4" data-aos="zoom-in" data-aos-delay="200">
-        <NuxtLink
-          :to="localePath('/contact')"
-          class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold shadow-lg hover:scale-105 transition"
-        >
-          {{ $t('services.getStarted') || 'Get Started' }}
-        </NuxtLink>
-
-        <button
-          @click="scrollToCaseStudy"
-          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/80 text-indigo-700 font-medium shadow-sm hover:shadow-md transition"
-        >
-          See case study
-        </button>
+      <!-- 🌌 Aurora Mist Waves -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute w-[150%] h-[200%] dark:bg-gradient-to-r dark:from-indigo-900/30 dark:via-blue-900/30 dark:to-purple-900/30 blur-3xl animate-aurora-sweep"
+        ></div>
       </div>
-    </div>
 
-    <!-- Image + Intro -->
-    <div class="relative max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 mb-12 z-10">
-      <div class="md:w-1/2 text-gray-700" data-aos="fade-right" data-aos-delay="150">
-        <h2 class="text-3xl font-semibold mb-4">Crafting digital experiences that convert</h2>
-        <p class="mb-4">
-          Our approach combines UX-first design, performant front-end engineering and scalable APIs. We prioritize
-          accessibility, fast load times and measurable outcomes so your site becomes a growth engine.
+      <!-- 🫧 Floating Blobs -->
+      <div
+        class="absolute w-[30rem] h-[30rem] rounded-full blur-3xl top-0 left-0 animate-blob dark:bg-indigo-900/30"
+      ></div>
+      <div
+        class="absolute w-[24rem] h-[24rem] rounded-full blur-3xl bottom-0 right-0 animate-blob animation-delay-2000 dark:bg-sky-900/28"
+      ></div>
+
+      <!-- Content -->
+      <div class="relative z-10 text-center py-4 px-6 max-w-4xl mx-auto">
+        <div class="flex justify-center mb-8" data-aos="zoom-in">
+          <div
+            class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-indigo-500/20"
+          >
+            <img
+              src="/assets/image/google logo.png"
+              :alt="$t('googleAds.hero.logoAlt')"
+              class="w-16 h-16"
+            />
+          </div>
+        </div>
+
+        <h1
+          class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+          data-aos="fade-up"
+        >
+          {{ $t("googleAds.hero.title") }}
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500"
+          >
+            {{ $t("googleAds.hero.highlighted") }}
+          </span>
+        </h1>
+
+        <p
+          class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          {{ $t("googleAds.hero.subtitle") }}
         </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-          <li class="flex items-start gap-3">
-            <span class="mt-1 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500 text-white">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>
-              Mobile-first, responsive interfaces
-            </span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-500 text-white">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>
-              Accessibility & best practices
-            </span>
-          </li>
-        </ul>
-      </div>
 
-      <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="250">
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
-          <img src="/assets/image/daart-banner.webp" alt="Web development example" class="w-full h-[360px] object-cover transform group-hover:scale-105 transition duration-700" />
-          <div class="absolute inset-0 bg-gradient-to-tr from-indigo-600/6 to-blue-500/6 opacity-0 group-hover:opacity-100 transition duration-700" aria-hidden="true"></div>
+        <p
+          class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          {{ $t("googleAds.hero.description") }}
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        ></div>
+        <div class="mb-4">
+          <NuxtLink :to="localePath('/#contact')">
+            <BaseButton>
+              {{ $t("googleAds.hero.ctaButton") }}
+            </BaseButton>
+            </NuxtLink
+          >
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- BENEFITS + STATS -->
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-12 z-10">
-      <!-- Benefits -->
-      <div class="space-y-6" data-aos="fade-up">
-        <div class="p-6 bg-white/80 backdrop-blur rounded-2xl border border-indigo-100 shadow">
-          <h3 class="text-lg font-semibold mb-2">Why choose us</h3>
-          <p class="text-gray-600 mb-4">
-            We bring product thinking and engineering rigor — from fast prototyping to long-term maintenance and analytics.
+    <!-- 📊 Overview Section -->
+    <section
+      class="relative py-20 overflow-hidden bg-gray-50/50 dark:bg-slate-800/20"
+    >
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <!-- Content -->
+          <div class="relative z-10" data-aos="fade-right">
+            <div class="text-center">
+              <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                {{ $t("googleAds.overview.title") }}
+                <span class="text-blue-600 dark:text-blue-400">{{
+                  $t("googleAds.overview.highlighted")
+                }}</span>
+              </h2>
+              <p
+                class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
+              >
+                {{ $t("googleAds.overview.description1") }}
+              </p>
+              <p
+                class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+              >
+                {{ $t("googleAds.overview.description2") }}
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+              <div
+                class="flex items-center space-x-3"
+                v-for="stat in stats"
+                :key="stat.label"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center shadow-sm dark:shadow-blue-900/20"
+                >
+                  <span class="text-2xl">{{ stat.icon }}</span>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-gray-900 dark:text-white">
+                    {{ stat.value }}
+                  </div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400">
+                    {{ $t(`googleAds.stats.${stat.key}`) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual -->
+          <div class="relative" data-aos="fade-left" data-aos-delay="200">
+            <div
+              class="relative bg-white/80 dark:bg-slate-800/50 backdrop-blur-lg rounded-3xl p-8 border border-white/20 dark:border-slate-700/50 shadow-2xl dark:shadow-slate-900/30"
+            >
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  v-for="n in 4"
+                  :key="n"
+                  class="bg-gradient-to-br from-blue-500/10 to-purple-600/10 dark:from-blue-500/20 dark:to-purple-600/20 rounded-2xl p-4 animate-pulse-slow border border-blue-100/20 dark:border-blue-500/10"
+                >
+                  <div
+                    class="h-4 bg-gray-300 dark:bg-slate-600 rounded mb-2"
+                  ></div>
+                  <div
+                    class="h-3 bg-gray-200 dark:bg-slate-700 rounded w-3/4"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="absolute -top-4 -right-4 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+              >
+                <span class="text-white text-sm">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🎯 Features Section -->
+    <section class="relative py-20 overflow-hidden bg-white dark:bg-slate-900">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            {{ $t("googleAds.features.title") }}
+            <span class="text-purple-600 dark:text-purple-400">{{
+              $t("googleAds.features.highlighted")
+            }}</span>
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {{ $t("googleAds.features.subtitle") }}
           </p>
-          <div class="flex flex-wrap gap-3">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm">Performance-first</span>
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">SEO optimized</span>
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-sm">Secure by default</span>
-          </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
-          <div class="p-5 bg-gradient-to-tr from-blue-500 to-indigo-500 text-white rounded-2xl shadow-md text-center" data-aos="zoom-in" data-aos-delay="100">
-            <div class="text-2xl font-bold">99%</div>
-            <div class="text-sm opacity-80">Uptime SLA</div>
-          </div>
-          <div class="p-5 bg-gradient-to-tr from-indigo-500 to-purple-500 text-white rounded-2xl shadow-md text-center" data-aos="zoom-in" data-aos-delay="200">
-            <div class="text-2xl font-bold">2s</div>
-            <div class="text-sm opacity-80">Avg page load</div>
-          </div>
-          <div class="p-5 bg-gradient-to-tr from-cyan-500 to-blue-500 text-white rounded-2xl shadow-md text-center" data-aos="zoom-in" data-aos-delay="300">
-            <div class="text-2xl font-bold">+35%</div>
-            <div class="text-sm opacity-80">Avg conversion lift</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature grid -->
-      <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="150">
-        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border border-indigo-100 shadow hover:shadow-lg transition">
-          <div class="flex items-center gap-3 mb-3">
-            <Code class="w-6 h-6 text-indigo-600" />
-            <h4 class="font-semibold">Modern stack</h4>
-          </div>
-          <p class="text-gray-600 text-sm">Vue 3, Nuxt 3, Vite — modern front-end with server-side rendering and incremental static generation.</p>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border border-indigo-100 shadow hover:shadow-lg transition">
-          <div class="flex items-center gap-3 mb-3">
-            <Globe class="w-6 h-6 text-indigo-600" />
-            <h4 class="font-semibold">Responsive & accessible</h4>
-          </div>
-          <p class="text-gray-600 text-sm">WCAG-aware builds and layouts that work and feel native on every device.</p>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border border-indigo-100 shadow hover:shadow-lg transition">
-          <div class="flex items-center gap-3 mb-3">
-            <svg class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <h4 class="font-semibold">Analytics & SEO</h4>
-          </div>
-          <p class="text-gray-600 text-sm">Built with semantic markup, fast metrics and analytics hooks for continuous improvements.</p>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border border-indigo-100 shadow hover:shadow-lg transition">
-          <div class="flex items-center gap-3 mb-3">
-            <Rocket class="w-6 h-6 text-indigo-600" />
-            <h4 class="font-semibold">Performance tuning</h4>
-          </div>
-          <p class="text-gray-600 text-sm">Image optimization, code splitting, caching strategies and CDN integration.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <BaseHomeCard
+            v-for="(feature, index) in features"
+            :key="feature.title"
+            :title="$t(`googleAds.features.list.${feature.key}.title`)"
+            :description="
+              $t(`googleAds.features.list.${feature.key}.description`)
+            "
+            :icon-component="feature.iconComponent"
+            :animation-type="index % 2 === 0 ? 'fade-up-right' : 'fade-up-left'"
+            :animation-delay="index * 100"
+            :show-action="false"
+            :custom-class="'group dark:hover:shadow-indigo-500/20'"
+          >
+            <!-- Custom Icon Slot with Gradient Background -->
+            <template #icon>
+              <div
+                class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg"
+              >
+                <component
+                  :is="feature.iconComponent"
+                  class="w-6 h-6 text-white"
+                />
+              </div>
+            </template>
+          </BaseHomeCard>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CASE STUDY -->
-    <div ref="caseStudyRef" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center mb-16 z-10" data-aos="fade-up" data-aos-delay="200">
-      <div>
-        <img src="/assets/image/daart-banner.webp" alt="Case study example" class="rounded-2xl shadow-lg w-full object-cover h-[360px]" />
-      </div>
-      <div>
-        <h3 class="text-2xl font-bold mb-3">Case Study — E-commerce sprint</h3>
-        <p class="text-gray-600 mb-4">
-          We redesigned and rebuilt a mid-size e-commerce platform to improve performance and conversion. Key outcomes included an 40% increase in conversions and a 50% reduction in time-to-interactive.
-        </p>
-        <ul class="list-inside list-disc text-gray-600 space-y-2">
-          <li>Full front-end rewrite with Nuxt 3 + SSR</li>
-          <li>Checkout flow optimization that reduced drop-offs</li>
-          <li>Automated image optimization & CDN deployment</li>
-        </ul>
-        <div class="mt-6">
-          <NuxtLink :to="localePath('/contact')" class="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold shadow hover:scale-105 transition">
-            Talk about a similar project
-          </NuxtLink>
-        </div>
-      </div>
-    </div>
-
-    <!-- TESTIMONIALS -->
-    <div class="max-w-6xl mx-auto mb-12 z-10" data-aos="fade-up" data-aos-delay="250">
-      <h3 class="text-2xl font-bold text-center mb-6">What clients say</h3>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div v-for="(t, i) in testimonials" :key="i" class="p-6 bg-white/80 rounded-2xl shadow border border-indigo-100">
-          <p class="text-gray-700 mb-3">“{{ t.text }}”</p>
-          <div class="flex items-center gap-3">
-            <img :src="t.avatar" alt="" class="w-10 h-10 rounded-full object-cover" />
-            <div>
-              <div class="font-semibold">{{ t.name }}</div>
-              <div class="text-sm text-gray-500">{{ t.role }}</div>
+    <!-- 💡 Benefits Section -->
+    <section
+      class="relative py-20 overflow-hidden bg-gray-50/50 dark:bg-slate-800/20"
+      :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'"
+    >
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <!-- Visual -->
+          <div
+            class="relative"
+            data-aos="fade-right"
+            :class="$i18n.locale === 'ar' ? 'lg:order-2' : ''"
+          >
+            <div class="grid grid-cols-2 gap-6">
+              <BaseHomeCard
+                v-for="(benefit, index) in benefits.slice(0, 4)"
+                :key="benefit.key"
+                :title="$t(`googleAds.benefits.list.${benefit.key}.title`)"
+                :description="
+                  $t(`googleAds.benefits.list.${benefit.key}.description`)
+                "
+                :animation-type="index % 2 === 0 ? 'zoom-in' : 'zoom-in-up'"
+                :animation-delay="index * 150"
+                :show-action="false"
+                :icon-alignment="$i18n.locale === 'ar' ? 'right' : 'left'"
+                :custom-class="
+                  [
+                    'bg-white/80 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 dark:border-slate-700/50 shadow-lg dark:shadow-slate-900/30 transition-all duration-300 hover:scale-105 hover:shadow-xl dark:hover:shadow-slate-900/50',
+                    $i18n.locale === 'ar' ? 'text-right' : 'text-left',
+                  ].join(' ')
+                "
+              >
+                <!-- Custom Icon Slot -->
+                <template #icon>
+                  <div
+                    class="w-12 h-12 bg-green-500/20 dark:bg-green-500/30 rounded-xl flex items-center justify-center shadow-sm"
+                  >
+                    <span class="text-2xl text-green-600 dark:text-green-400"
+                      >✓</span
+                    >
+                  </div>
+                </template>
+              </BaseHomeCard>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- FAQ (accordion) -->
-    <div class="max-w-4xl mx-auto mb-20 z-10" data-aos="fade-up" data-aos-delay="300">
-      <h3 class="text-2xl font-bold text-center mb-6">Frequently asked questions</h3>
-      <div class="space-y-3">
-        <div v-for="(f, idx) in faqs" :key="idx" class="bg-white/80 rounded-2xl border border-indigo-100 overflow-hidden">
-          <button @click="toggleFaq(idx)" class="w-full px-6 py-4 flex items-center justify-between text-left">
-            <div>
-              <div class="font-semibold">{{ f.q }}</div>
-              <div class="text-sm text-gray-500 mt-1">{{ f.meta }}</div>
-            </div>
-            <div :class="{'transform rotate-180': openFaq === idx}" class="transition-transform">
-              <svg class="w-5 h-5 text-indigo-600" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-          </button>
-          <div v-show="openFaq === idx" class="px-6 pb-6 text-gray-600 transition-all">
-            {{ f.a }}
+          <!-- Content -->
+          <div
+            class="relative z-10"
+            data-aos="fade-left"
+            :class="$i18n.locale === 'ar' ? 'lg:order-1' : ''"
+          >
+            <h2
+              class="text-4xl font-bold text-gray-900 dark:text-white mb-6"
+              :class="$i18n.locale === 'ar' ? 'text-right' : 'text-left'"
+            >
+              {{ $t("googleAds.benefits.title") }}
+              <span class="text-green-600 dark:text-green-400">
+                {{ $t("googleAds.benefits.highlighted") }}
+              </span>
+            </h2>
+            <p
+              class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+              :class="$i18n.locale === 'ar' ? 'text-right' : 'text-left'"
+            >
+              {{ $t("googleAds.benefits.description") }}
+            </p>
+
+            <ul
+              class="space-y-4"
+              :class="$i18n.locale === 'ar' ? 'ltr' : 'rtl'"
+            >
+              <li
+                v-for="(point, index) in keyPoints"
+                :key="index"
+                class="flex items-center text-gray-600 dark:text-gray-300 group hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                :data-aos="'fade-left'"
+                :data-aos-delay="index * 100"
+                :class="[
+                  $i18n.locale === 'ar'
+                    ? 'flex-row-reverse space-x-reverse'
+                    : 'flex-row',
+                  $i18n.locale === 'ar' ? 'text-right' : 'text-left',
+                ]"
+              >
+                <div
+                  class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200 shadow-sm"
+                  :class="$i18n.locale === 'ar' ? 'ml-3' : 'mr-3'"
+                >
+                  <span class="text-white text-sm">✓</span>
+                </div>
+                <span
+                  class="transition-transform duration-200"
+                  :class="[
+                    $i18n.locale === 'ar'
+                      ? 'group-hover:-translate-x-1'
+                      : 'group-hover:translate-x-1',
+                  ]"
+                >
+                  {{ $t(`googleAds.keyPoints.${point.key}`) }}
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CTA -->
-    <div class="text-center z-10" data-aos="zoom-in" data-aos-delay="350">
-      <NuxtLink :to="localePath('/contact')" class="inline-block px-12 py-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold shadow-lg hover:scale-105 transition">
-        Start your project
-      </NuxtLink>
-    </div>
-  </section>
+    <!-- 📈 Process Section -->
+    <section class="relative py-20 overflow-hidden bg-white dark:bg-slate-900">
+      <StepCard :process="process" />
+    </section>
+
+    <!-- 🚀 CTA Section -->
+    <section>
+      <LeadSections />
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Code, Globe, Rocket } from 'lucide-vue-next'
-const localePath = useLocalePath()
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { onMounted, nextTick } from "vue";
+import BaseHomeCard from "~/components/elements/cards/BaseHomeCard.vue";
+import StepCard from "~/components/elements/cards/stepCard.vue";
+import BaseButton from "~/components/elements/button/index.vue";
+const localePath = useLocalePath();
 
-// small reusable data
+import {
+  Search,
+  Play,
+  ShoppingCart,
+  Smartphone,
+  LayoutGrid,
+  BarChart3,
+} from "lucide-vue-next";
+import LeadSections from "../elements/components/leadSections.vue";
+
+onMounted(async () => {
+  await nextTick();
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+  });
+  setTimeout(() => AOS.refresh(), 800);
+});
+
 const features = [
-  { title: 'Modern Stack', text: 'Vue 3 + Nuxt 3 with Vite for the fastest DX and runtime.', icon: Code },
-  { title: 'Responsive', text: 'Pixel-perfect layouts and accessible experiences across devices.', icon: Globe },
-  { title: 'Performance', text: 'Image optimization, caching, and CDN delivery for fast pages.', icon: Rocket }
-]
+  {
+    key: "search",
+    title: "Search Advertising",
+    description:
+      "Appear at the top of Google search results when potential customers are actively looking for your products or services.",
+    iconComponent: Search,
+  },
+  {
+    key: "video",
+    title: "Video Campaigns",
+    description:
+      "Engage your audience with compelling video ads on YouTube and across the Google Display Network.",
+    iconComponent: Play,
+  },
+  {
+    key: "shopping",
+    title: "Shopping Ads",
+    description:
+      "Showcase your products directly in Google search results with high-quality images and pricing information.",
+    iconComponent: ShoppingCart,
+  },
+  {
+    key: "app",
+    title: "App Promotion",
+    description:
+      "Drive app installs and engagement with targeted campaigns across Google's mobile advertising network.",
+    iconComponent: Smartphone,
+  },
+  {
+    key: "display",
+    title: "Display Network",
+    description:
+      "Reach potential customers while they browse websites, use apps, or watch videos across the internet.",
+    iconComponent: LayoutGrid,
+  },
+  {
+    key: "analytics",
+    title: "Performance Analytics",
+    description:
+      "Comprehensive reporting and optimization to ensure your campaigns deliver maximum return on investment.",
+    iconComponent: BarChart3,
+  },
+];
 
-const testimonials = [
-  { name: 'Sara Ali', role: 'Head of Growth — RetailCo', text: 'Daart delivered a high-performing site and conversion improvements exceeded expectations.', avatar: '/assets/image/avatar1.jpg' },
-  { name: 'John Miller', role: 'Founder — AppX', text: 'Fast delivery, clear communication and measurable outcomes. Highly recommended.', avatar: '/assets/image/avatar2.jpg' }
-]
+const stats = [
+  { key: "ctr", icon: "🎯", value: "91%", label: "Click-Through Rate" },
+  { key: "roi", icon: "💰", value: "200%", label: "ROI Increase" },
+  { key: "searches", icon: "📈", value: "3.5B", label: "Daily Searches" },
+  { key: "rating", icon: "⭐", value: "4.9/5", label: "Client Rating" },
+];
 
-// FAQ accordion state
-const faqs = [
-  { q: 'How long does a typical project take?', meta: 'Timeline & phases', a: 'A typical website (5–10 pages) takes 6–10 weeks depending on scope and integrations.' },
-  { q: 'Will my site be SEO ready?', meta: 'Search & structure', a: 'Yes. We include on-page SEO, semantic HTML and performance improvements designed to help ranking.' },
-  { q: 'Do you provide post-launch support?', meta: 'Maintenance', a: 'Yes — we offer maintenance, monitoring and iterative improvements packages.' }
-]
+const benefits = [
+  {
+    key: "visibility",
+    title: "Increased Visibility",
+    description:
+      "Appear at the top of search results when customers are ready to buy.",
+  },
+  {
+    key: "targeting",
+    title: "Targeted Audience",
+    description:
+      "Reach people based on their search behavior, interests, and demographics.",
+  },
+  {
+    key: "measurable",
+    title: "Measurable Results",
+    description:
+      "Track every click, conversion, and dollar spent with detailed analytics.",
+  },
+  {
+    key: "budgeting",
+    title: "Flexible Budgeting",
+    description:
+      "Control your spending with daily budgets and pay only for results.",
+  },
+  {
+    key: "setup",
+    title: "Quick Setup",
+    description:
+      "Launch campaigns in days, not months, and start seeing results immediately.",
+  },
+  {
+    key: "management",
+    title: "Expert Management",
+    description:
+      "Our certified specialists optimize campaigns for maximum performance.",
+  },
+];
 
-const openFaq = ref<number | null>(null)
-function toggleFaq(i: number) {
-  openFaq.value = openFaq.value === i ? null : i
-}
+const keyPoints = [
+  { key: "certified", text: "Certified Google Ads Professionals" },
+  { key: "dataDriven", text: "Data-Driven Strategy Development" },
+  { key: "optimization", text: "Continuous Campaign Optimization" },
+  { key: "reporting", text: "Transparent Reporting & Analytics" },
+  { key: "accountManagement", text: "Dedicated Account Management" },
+  { key: "trackRecord", text: "Proven Track Record of Success" },
+];
 
-// scroll to case study ref
-const caseStudyRef = ref<HTMLElement | null>(null)
-function scrollToCaseStudy() {
-  if (caseStudyRef.value) {
-    caseStudyRef.value.scrollIntoView({ behavior: 'smooth', block: 'center' })
-  }
-}
+const process = [
+  {
+    key: "strategy",
+    icon: "🎯",
+    title: "Strategy & Planning",
+    description:
+      "We analyze your business goals and target audience to create a customized Google Ads strategy.",
+  },
+  {
+    key: "setup",
+    icon: "🚀",
+    title: "Campaign Setup",
+    description:
+      "Our experts build and launch optimized campaigns with compelling ad copy and targeting.",
+  },
+  {
+    key: "optimization",
+    icon: "📊",
+    title: "Monitoring & Optimization",
+    description:
+      "Continuous performance tracking and optimization to maximize your return on investment.",
+  },
+  {
+    key: "reporting",
+    icon: "📈",
+    title: "Reporting & Growth",
+    description:
+      "Regular performance reports and strategic recommendations for ongoing campaign growth.",
+  },
+];
 </script>
 
 <style scoped>
-/* blob animation */
+/* 🌈 Background Motion */
+@keyframes gradient-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient-flow {
+  background-size: 200% 200%;
+  animation: gradient-flow 16s ease infinite;
+}
+
+/* 🌌 Aurora Wave */
+@keyframes aurora-sweep {
+  0% {
+    transform: translateX(-20%) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(20%) rotate(2deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-20%) rotate(0deg);
+    opacity: 0.3;
+  }
+}
+.animate-aurora-sweep {
+  animation: aurora-sweep 14s ease-in-out infinite;
+}
+
+/* 🫧 Floating Blobs */
 @keyframes blob {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(32px, -36px) scale(1.06); }
-  66% { transform: translate(-24px, 22px) scale(0.96); }
-  100% { transform: translate(0, 0) scale(1); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-40px, 30px) scale(0.9);
+  }
 }
 .animate-blob {
-  animation: blob 14s ease-in-out infinite;
+  animation: blob 12s infinite ease-in-out;
+  opacity: 0.4;
 }
 .animation-delay-2000 {
   animation-delay: 2s;
 }
 
-/* small show/hide transition for FAQ (v-show) */
-[v-cloak] { display: none !important; }
+/* ✨ Additional Animations */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 5s ease-in-out infinite;
+}
 
-/* minor responsive tweaks */
-@media (max-width: 640px) {
-  .animate-blob { opacity: 0.6; }
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, transform,
+    box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>
