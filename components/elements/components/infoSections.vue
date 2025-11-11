@@ -126,7 +126,7 @@
         data-aos-delay="600"
       >
         <img
-          src="/assets/image/Google logo.png"
+          src="/assets/image/Google-logo.png"
           :alt="$t('info2.imageAlt')"
           class="w-full max-w-md lg:max-w-lg object-contain transform hover:scale-110 hover:rotate-1 transition-all duration-700 ease-out filter dark:brightness-95"
         />
