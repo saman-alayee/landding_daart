@@ -36,7 +36,7 @@
             class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-indigo-500/20"
           >
             <img
-              :src="require('~/assets/image/google-logo.png')"
+              :src="logo"
               :alt="$t('googleAds.hero.logoAlt')"
               class="w-16 h-16"
             />
@@ -338,6 +338,8 @@ import { onMounted, nextTick } from "vue";
 import BaseHomeCard from "~/components/elements/cards/BaseHomeCard.vue";
 import StepCard from "~/components/elements/cards/stepCard.vue";
 import BaseButton from "~/components/elements/button/index.vue";
+import logo from '~/assets/image/Google-logo.png'
+
 const localePath = useLocalePath();
 
 import {
