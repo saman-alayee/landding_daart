@@ -36,7 +36,7 @@
             class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-indigo-500/20"
           >
             <img
-              src="~/assets/image/google-logo.png"
+              :src="require('~/assets/image/google-logo.png')"
               :alt="$t('googleAds.hero.logoAlt')"
               class="w-16 h-16"
             />
