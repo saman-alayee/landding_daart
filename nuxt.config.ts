@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   },
   devServer: {
     host: '0.0.0.0',
-    port: 3000
+    port: 4000
   }, runtimeConfig: {
     public: {
       apiBase: 'https://ir.daartads.com/api/v1',
