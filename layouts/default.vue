@@ -35,24 +35,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 🌈 Smooth transition between light/dark */
-html {
-  transition: background-color 0.8s ease, color 0.8s ease;
-}
 
-main {
-  transition: all 0.6s ease;
-}
-
-/* Optional subtle gradient animation for background */
-@keyframes subtle-gradient-flow {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
 
 
 </style>

@@ -1,9 +1,7 @@
 <template>
     <section id="contact">
         <div
-            class="relative py-24 overflow-hidden min-h-screen"
-            data-aos="fade-up"
-            data-aos-duration="1200"
+            class="relative py-24 overflow-hidden min-h-screen contact-section"
             :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'"
         >
             <!-- 🌫️ Dark Mode Gradient Background (added without removing light mode) -->
@@ -74,9 +72,7 @@
 
             <div class="relative max-w-5xl mx-auto px-6 text-center z-10">
                 <h2
-                    class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 leading-tight drop-shadow-sm"
-                    data-aos="zoom-in"
-                    data-aos-delay="100"
+                    class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 leading-tight drop-shadow-sm aos-animate aos-fade-up aos-delay-100"
                 >
                     {{ $t('leadForm.title') }}
                     <span
@@ -87,18 +83,14 @@
                 </h2>
 
                 <p
-                    class="text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto text-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
+                    class="text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto text-lg aos-animate aos-fade-up aos-delay-200"
                 >
                     {{ $t('leadForm.subtitle') }}
                 </p>
 
                 <form
                     @submit.prevent="submitLead"
-                    class="relative bg-white/70 dark:bg-white/10 backdrop-blur-2xl border border-white/40 dark:border-white/20 shadow-2xl rounded-3xl p-10 space-y-8 hover:shadow-blue-300/40 dark:hover:shadow-indigo-500/20 transition-all duration-700 animate-float"
-                    data-aos="zoom-in"
-                    data-aos-delay="300"
+                    class="relative bg-white/70 dark:bg-white/10 backdrop-blur-2xl border border-white/40 dark:border-white/20 shadow-2xl rounded-3xl p-10 space-y-8 hover:shadow-blue-300/40 dark:hover:shadow-indigo-500/20 transition-all duration-700 animate-float aos-animate aos-zoom-in aos-delay-300"
                 >
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <InputBase :label="$t('leadForm.fields.name.label')" :placeholder="$t('leadForm.fields.name.placeholder')" v-model="leadForm.name" requireText="*" maxLength="50" />
@@ -135,20 +127,12 @@
 
 <script setup lang="ts">
 import BaseButton from '~/components/elements/button/index.vue'
-import { ref, reactive, nextTick } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import InputBase from '~/components/elements/baseInput/input.vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCrmStore } from '~/stores/createLeads'
 const { t: $t } = useI18n()
 const crmStore = useCrmStore()
-import 'swiper/css';
-import 'swiper/css/pagination';
 
 // Define types for form and API response
 interface LeadForm {
@@ -201,17 +185,30 @@ const submitLead = async (): Promise<void> => {
     }
 }
 
-onMounted(async () => {
-    await nextTick()
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100,
-    })
-    setTimeout(() => {
-        AOS.refresh()
-    }, 800)
+onMounted(() => {
+    // Initialize scroll animations
+    initScrollAnimations()
 })
+
+const initScrollAnimations = () => {
+    if (typeof window !== 'undefined') {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate')
+                }
+            })
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        })
+
+        // Observe all elements with AOS classes
+        document.querySelectorAll('.aos-fade-up, .aos-zoom-in').forEach(el => {
+            observer.observe(el)
+        })
+    }
+}
 </script>
 
 <style scoped>
@@ -327,4 +324,74 @@ onMounted(async () => {
   50% { transform: translateY(-6px); }
 }
 .animate-float { animation: float 6s ease-in-out infinite; }
+
+/* AOS Replacement Animations */
+.aos-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.aos-zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease-out;
+}
+
+.aos-animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Animation Delays */
+.aos-delay-100 {
+    transition-delay: 100ms;
+}
+
+.aos-delay-200 {
+    transition-delay: 200ms;
+}
+
+.aos-delay-300 {
+    transition-delay: 300ms;
+}
+
+.aos-delay-400 {
+    transition-delay: 400ms;
+}
+
+.aos-delay-500 {
+    transition-delay: 500ms;
+}
+
+/* Section animation */
+.contact-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: section-fade-up 1s ease-out 0.2s forwards;
+}
+
+@keyframes section-fade-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .aos-fade-up,
+    .aos-zoom-in,
+    .contact-section {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .aos-animate {
+        opacity: 1;
+        transform: none;
+    }
+}
 </style>

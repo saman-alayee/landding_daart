@@ -62,13 +62,13 @@
       }"
     ></div>
 
-    <!-- 🌟 Main Content -->
-    <div class="relative z-10 max-w-4xl" data-aos="zoom-in" data-aos-duration="1000">
+    <!-- 🌟 Main Content (revealed via IntersectionObserver + CSS transitions) -->
+    <div class="relative z-10 max-w-4xl">
+      <!-- Title -->
       <h1
-        :class="[
-          'font-extrabold text-4xl lg:text-6xl lg-2  leading-tight mb-6 tracking-tight drop-shadow-sm',
-          isDark ? 'text-gray-100' : 'text-gray-800'
-        ]"
+        data-reveal
+        class="reveal delay-200 font-extrabold text-4xl lg:text-6xl lg-2 leading-tight mb-6 tracking-tight drop-shadow-sm"
+        :class="isDark ? 'text-gray-100' : 'text-gray-800'"
       >
         {{ $t('hero.title.part1') }} <br />
         {{ $t('hero.title.part2') }}
@@ -80,18 +80,17 @@
         .
       </h1>
 
+      <!-- Subtitle -->
       <h5
-        :class="[
-          'max-w-2xl mx-auto mb-10 text-lg lg:text-xl leading-relaxed',
-          isDark ? 'text-slate-300' : 'text-gray-600'
-        ]"
-        data-aos="fade-up"
-        data-aos-delay="200"
+        data-reveal
+        class="reveal delay-400 max-w-2xl mx-auto mb-10 text-lg lg:text-xl leading-relaxed"
+        :class="isDark ? 'text-slate-300' : 'text-gray-600'"
       >
         {{ $t('hero.subtitle') }}
       </h5>
 
-      <div class="flex justify-center relative group" data-aos="zoom-in" data-aos-delay="400">
+      <!-- CTA -->
+      <div data-reveal class="reveal delay-600 flex justify-center relative group">
         <div
           class="absolute w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-100 animate-pulse-wave bg-indigo-300/10 dark:bg-indigo-700/10"
         ></div>
@@ -99,7 +98,6 @@
         <NuxtLink :to="localePath('/#contact')">
           <BaseButton
             type="button"
-            
             :class="[
               'glass-button text-white shadow-lg transition-transform duration-300 hover:scale-110 backdrop-blur-lg border border-white/30 relative overflow-hidden',
               isDark
@@ -122,11 +120,6 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref, nextTick } from 'vue'
 import BaseButton from '~/components/elements/button/index.vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
 import { useI18n } from 'vue-i18n'
 
 const { t: $t } = useI18n()
@@ -135,21 +128,20 @@ const localePath = useLocalePath()
 // reactive dark flag — observes <html class="dark"> changes
 const isDark = ref(false)
 let mo: MutationObserver | null = null
+let observer: IntersectionObserver | null = null
 
 function updateDarkFromHtml() {
   isDark.value = document.documentElement.classList.contains('dark')
 }
 
+function onStorage(e: StorageEvent) {
+  if (e.key === 'theme') {
+    updateDarkFromHtml()
+  }
+}
+
 onMounted(async () => {
   await nextTick()
-
-  // initialize AOS
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100,
-  })
-  setTimeout(() => AOS.refresh(), 800)
 
   // initial theme read
   updateDarkFromHtml()
@@ -160,24 +152,44 @@ onMounted(async () => {
 
   // also listen to storage events (header toggle might set localStorage)
   window.addEventListener('storage', onStorage)
+
+  // IntersectionObserver reveal
+  const revealTargets = Array.from(document.querySelectorAll('[data-reveal]')) as HTMLElement[]
+
+  if (revealTargets.length > 0 && 'IntersectionObserver' in window) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement
+          if (entry.isIntersecting) {
+            el.classList.add('visible')
+            observer?.unobserve(el)
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.12,
+      }
+    )
+
+    revealTargets.forEach((el) => observer?.observe(el))
+  } else {
+    // fallback — immediately show elements if IntersectionObserver not supported
+    revealTargets.forEach((el) => el.classList.add('visible'))
+  }
 })
 
 onBeforeUnmount(() => {
   if (mo) mo.disconnect()
+  if (observer) observer.disconnect()
   window.removeEventListener('storage', onStorage)
 })
-
-function onStorage(e: StorageEvent) {
-  if (e.key === 'theme') {
-    // theme string changed — update
-    updateDarkFromHtml()
-  }
-}
-
 </script>
 
 <style scoped>
-/* 🌈 Soft Gradient Motion */
+/* -------- Existing heavy but harmless background animations (kept) -------- */
 @keyframes gradient-flow {
   0%,
   100% {
@@ -192,7 +204,6 @@ function onStorage(e: StorageEvent) {
   animation: gradient-flow 16s ease infinite;
 }
 
-/* 🌌 Aurora Sweep */
 @keyframes aurora-sweep {
   0% {
     transform: translateX(-20%) rotate(0deg);
@@ -211,7 +222,6 @@ function onStorage(e: StorageEvent) {
   animation: aurora-sweep 14s ease-in-out infinite;
 }
 
-/* 🫧 Blob Motion */
 @keyframes blob {
   0%,
   100% {
@@ -235,7 +245,6 @@ function onStorage(e: StorageEvent) {
   animation-delay: 4s;
 }
 
-/* 🔵 Rotating Rings */
 @keyframes spin-slow {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -259,7 +268,6 @@ function onStorage(e: StorageEvent) {
   animation: spin-reverse 40s linear infinite;
 }
 
-/* 💫 Text Glow */
 @keyframes text-glow {
   0%,
   100% {
@@ -273,7 +281,6 @@ function onStorage(e: StorageEvent) {
   animation: text-glow 3.5s ease-in-out infinite;
 }
 
-/* 🌠 Particles */
 @keyframes particle {
   0%,
   100% {
@@ -303,7 +310,6 @@ function onStorage(e: StorageEvent) {
   animation: particle-slow 9s ease-in-out infinite;
 }
 
-/* 🌊 Button Glow Sweep */
 @keyframes glow-sweep {
   0% {
     transform: translateX(-100%);
@@ -321,7 +327,6 @@ function onStorage(e: StorageEvent) {
   animation: glow-sweep 2.4s linear infinite;
 }
 
-/* 💥 Pulse Wave */
 @keyframes pulse-wave {
   0% {
     transform: scale(1);
@@ -340,7 +345,6 @@ function onStorage(e: StorageEvent) {
   animation: pulse-wave 2.5s ease-out infinite;
 }
 
-/* 🪞 Glass Button */
 .glass-button {
   padding: 1rem 2.8rem;
   border-radius: 1rem;
@@ -352,5 +356,42 @@ function onStorage(e: StorageEvent) {
 }
 .lg-2 {
   line-height: 1.3 !important;
+}
+
+/* ---------------- New reveal (CSS-only) ---------------- */
+/* base reveal state */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.992);
+  transition-property: opacity, transform;
+  transition-duration: 820ms;
+  transition-timing-function: cubic-bezier(.2,.9,.3,1);
+  will-change: opacity, transform;
+}
+
+/* visible state — added by IntersectionObserver */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* delay helpers (transition-delay) */
+.delay-100 { transition-delay: .1s; }
+.delay-150 { transition-delay: .15s; }
+.delay-200 { transition-delay: .2s; }
+.delay-300 { transition-delay: .3s; }
+.delay-400 { transition-delay: .4s; }
+.delay-600 { transition-delay: .6s; }
+
+/* make CTA feel slightly "zoom in" on reveal */
+.reveal.delay-600 { transform-origin: center; }
+
+/* small accessibility: prefers-reduced-motion respected */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 </style>

@@ -3,89 +3,69 @@
     class="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300"
   >
     <!-- 🌟 Hero Section -->
-    <section
-      class="relative overflow-hidden min-h-[80vh] flex items-center justify-center"
-    >
-      <!-- 🌫️ Dark Mode Gradient Background -->
-      <div
-        class="absolute inset-0 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-neutral-900 animate-gradient-flow"
-      ></div>
-      <div
-        class="absolute inset-0 dark:bg-[radial-gradient(circle_at_30%_30%,rgba(30,41,59,0.25),transparent_60%)]"
-      ></div>
+  <section class="relative overflow-hidden min-h-[80vh] flex items-center justify-center">
+    <!-- 🌫️ Dark Mode Gradient Background -->
+    <div
+      class="absolute inset-0 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-neutral-900 animate-gradient-flow"
+    ></div>
+    <div
+      class="absolute inset-0 dark:bg-[radial-gradient(circle_at_30%_30%,rgba(30,41,59,0.25),transparent_60%)]"
+    ></div>
 
-      <!-- 🌌 Aurora Mist Waves -->
-      <div class="absolute inset-0 overflow-hidden">
+    <!-- 🌌 Aurora Mist Waves -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div
+        class="absolute w-[150%] h-[200%] dark:bg-gradient-to-r dark:from-indigo-900/30 dark:via-blue-900/30 dark:to-purple-900/30 blur-3xl animate-aurora-sweep"
+      ></div>
+    </div>
+
+    <!-- 🫧 Floating Blobs -->
+    <div
+      class="absolute w-[30rem] h-[30rem] rounded-full blur-3xl top-0 left-0 animate-blob dark:bg-indigo-900/30"
+    ></div>
+    <div
+      class="absolute w-[24rem] h-[24rem] rounded-full blur-3xl bottom-0 right-0 animate-blob animation-delay-2000 dark:bg-sky-900/28"
+    ></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center py-4 px-6 max-w-4xl mx-auto">
+      <!-- Logo -->
+      <div class="flex justify-center mb-8 animate-load fade-zoom" style="animation-delay: 0s;">
         <div
-          class="absolute w-[150%] h-[200%] dark:bg-gradient-to-r dark:from-indigo-900/30 dark:via-blue-900/30 dark:to-purple-900/30 blur-3xl animate-aurora-sweep"
-        ></div>
-      </div>
-
-      <!-- 🫧 Floating Blobs -->
-      <div
-        class="absolute w-[30rem] h-[30rem] rounded-full blur-3xl top-0 left-0 animate-blob dark:bg-indigo-900/30"
-      ></div>
-      <div
-        class="absolute w-[24rem] h-[24rem] rounded-full blur-3xl bottom-0 right-0 animate-blob animation-delay-2000 dark:bg-sky-900/28"
-      ></div>
-
-      <!-- Content -->
-      <div class="relative z-10 text-center py-4 px-6 max-w-4xl mx-auto">
-        <div class="flex justify-center mb-8" data-aos="zoom-in">
-          <div
-            class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-indigo-500/20"
-          >
-            <img
-              :src="logo"
-              :alt="$t('googleAds.hero.logoAlt')"
-              class="w-16 h-16"
-            />
-          </div>
-        </div>
-
-        <h1
-          class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
-          data-aos="fade-up"
+          class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-indigo-500/20"
         >
-          {{ $t("googleAds.hero.title") }}
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500"
-          >
-            {{ $t("googleAds.hero.highlighted") }}
-          </span>
-        </h1>
-
-        <p
-          class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          {{ $t("googleAds.hero.subtitle") }}
-        </p>
-
-        <p
-          class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
-          {{ $t("googleAds.hero.description") }}
-        </p>
-
-        <div
-          class="flex flex-col sm:flex-row gap-4 justify-center"
-          data-aos="fade-up"
-          data-aos-delay="600"
-        ></div>
-        <div class="mb-4">
-          <NuxtLink :to="localePath('/#contact')">
-            <BaseButton>
-              {{ $t("googleAds.hero.ctaButton") }}
-            </BaseButton>
-            </NuxtLink
-          >
+          <img :src="logo" :alt="$t('googleAds.hero.logoAlt')" class="w-16 h-16" />
         </div>
       </div>
-    </section>
+
+      <!-- Heading -->
+      <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-load fade-up" style="animation-delay: 0.2s;">
+        {{ $t("googleAds.hero.title") }}
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
+          {{ $t("googleAds.hero.highlighted") }}
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed animate-load fade-up" style="animation-delay: 0.4s;">
+        {{ $t("googleAds.hero.subtitle") }}
+      </p>
+
+      <!-- Description -->
+      <p class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12 animate-load fade-up" style="animation-delay: 0.6s;">
+        {{ $t("googleAds.hero.description") }}
+      </p>
+
+      <!-- CTA Button -->
+      <div class="flex justify-center animate-load fade-up" style="animation-delay: 0.8s;">
+        <NuxtLink :to="localePath('/#contact')">
+          <BaseButton>
+            {{ $t("googleAds.hero.ctaButton") }}
+          </BaseButton>
+        </NuxtLink>
+      </div>
+    </div>
+  </section>
 
     <!-- 📊 Overview Section -->
     <section
@@ -94,7 +74,7 @@
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <!-- Content -->
-          <div class="relative z-10" data-aos="fade-right">
+          <div class="relative z-10 animate-fade-right">
             <div class="text-center">
               <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
                 {{ $t("googleAds.overview.title") }}
@@ -137,7 +117,7 @@
           </div>
 
           <!-- Visual -->
-          <div class="relative" data-aos="fade-left" data-aos-delay="200">
+          <div class="relative animate-fade-left animation-delay-200">
             <div
               class="relative bg-white/80 dark:bg-slate-800/50 backdrop-blur-lg rounded-3xl p-8 border border-white/20 dark:border-slate-700/50 shadow-2xl dark:shadow-slate-900/30"
             >
@@ -169,7 +149,7 @@
     <!-- 🎯 Features Section -->
     <section class="relative py-20 overflow-hidden bg-white dark:bg-slate-900">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-16" data-aos="fade-up">
+        <div class="text-center mb-16 animate-fade-up">
           <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {{ $t("googleAds.features.title") }}
             <span class="text-purple-600 dark:text-purple-400">{{
@@ -220,11 +200,10 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <!-- Visual -->
           <div
-            class="relative"
-            data-aos="fade-right"
+            class="relative animate-fade-right"
             :class="$i18n.locale === 'ar' ? 'lg:order-2' : ''"
           >
-            <div class="grid grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <BaseHomeCard
                 v-for="(benefit, index) in benefits.slice(0, 4)"
                 :key="benefit.key"
@@ -259,8 +238,7 @@
 
           <!-- Content -->
           <div
-            class="relative z-10"
-            data-aos="fade-left"
+            class="relative z-10 animate-fade-left"
             :class="$i18n.locale === 'ar' ? 'lg:order-1' : ''"
           >
             <h2
@@ -286,24 +264,17 @@
               <li
                 v-for="(point, index) in keyPoints"
                 :key="index"
-                class="flex items-center text-gray-600 dark:text-gray-300 group hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-                :data-aos="'fade-left'"
-                :data-aos-delay="index * 100"
-                :class="[
-                  $i18n.locale === 'ar'
-                    ? 'flex-row-reverse space-x-reverse'
-                    : 'flex-row',
-                  $i18n.locale === 'ar' ? 'text-right' : 'text-left',
-                ]"
+                class="flex items-center text-gray-600 dark:text-gray-300 group hover:text-gray-900 dark:hover:text-white transition-colors duration-200 animate-fade-left"
+               
               >
                 <div
                   class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200 shadow-sm"
                   :class="$i18n.locale === 'ar' ? 'ml-3' : 'mr-3'"
                 >
-                  <span class="text-white text-sm">✓</span>
+                  <span class="text-white text-sm p-2">✓</span>
                 </div>
                 <span
-                  class="transition-transform duration-200"
+                  class="transition-transform duration-200 mx-2"
                   :class="[
                     $i18n.locale === 'ar'
                       ? 'group-hover:-translate-x-1'
@@ -332,9 +303,6 @@
 </template>
 
 <script setup lang="ts">
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { onMounted, nextTick } from "vue";
 import BaseHomeCard from "~/components/elements/cards/BaseHomeCard.vue";
 import StepCard from "~/components/elements/cards/stepCard.vue";
 import BaseButton from "~/components/elements/button/index.vue";
@@ -351,16 +319,6 @@ import {
   BarChart3,
 } from "lucide-vue-next";
 import LeadSections from "../elements/components/leadSections.vue";
-
-onMounted(async () => {
-  await nextTick();
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100,
-  });
-  setTimeout(() => AOS.refresh(), 800);
-});
 
 const features = [
   {
@@ -566,11 +524,204 @@ const process = [
   animation: pulse-slow 5s ease-in-out infinite;
 }
 
+/* AOS Replacement Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-in-up {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fade-up-right {
+  from {
+    opacity: 0;
+    transform: translate(30px, 30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fade-up-left {
+  from {
+    opacity: 0;
+    transform: translate(-30px, 30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-up {
+  animation: fade-up 1s ease-out both;
+}
+
+.animate-fade-down {
+  animation: fade-down 1s ease-out both;
+}
+
+.animate-fade-left {
+  animation: fade-left 1s ease-out both;
+}
+
+.animate-fade-right {
+  animation: fade-right 1s ease-out both;
+}
+
+.animate-zoom-in {
+  animation: zoom-in 0.6s ease-out both;
+}
+
+.animate-zoom-in-up {
+  animation: zoom-in-up 0.8s ease-out both;
+}
+
+.animate-fade-up-right {
+  animation: fade-up-right 1s ease-out both;
+}
+
+.animate-fade-up-left {
+  animation: fade-up-left 1s ease-out both;
+}
+
+/* Animation Delays */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
 /* Smooth transitions for all interactive elements */
 * {
   transition-property: color, background-color, border-color, transform,
     box-shadow;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll-triggered animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up,
+  .animate-fade-down,
+  .animate-fade-left,
+  .animate-fade-right,
+  .animate-zoom-in,
+  .animate-zoom-in-up,
+  .animate-fade-up-right,
+  .animate-fade-up-left {
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+
+
+
+
+
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeZoom {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-load {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+}
+
+.fade-up {
+  animation-name: fadeUp;
+}
+
+.fade-zoom {
+  animation-name: fadeZoom;
 }
 </style>
