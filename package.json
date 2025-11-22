@@ -3,12 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nuxt dev",
     "build": "nuxt build",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "start": "nuxt start --hostname 0.0.0.0 --port 4000"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@alireza-ab/vue3-persian-datepicker": "^1.0.4",
