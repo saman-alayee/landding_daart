@@ -94,10 +94,11 @@
                 >
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <InputBase :label="$t('leadForm.fields.name.label')" :placeholder="$t('leadForm.fields.name.placeholder')" v-model="leadForm.name" requireText="*" maxLength="50" />
-                        <InputBase :label="$t('leadForm.fields.lastname.label')" :placeholder="$t('leadForm.fields.lastname.placeholder')" v-model="leadForm.lastname" requireText="*" maxLength="50" />
                         <InputBase :label="$t('leadForm.fields.company.label')" :placeholder="$t('leadForm.fields.company.placeholder')" v-model="leadForm.company" maxLength="100" />
                         <InputBase :label="$t('leadForm.fields.phone.label')" :placeholder="$t('leadForm.fields.phone.placeholder')" v-model="leadForm.phone" maxLength="20" />
-                        <InputBase class="md:col-span-2" :label="$t('leadForm.fields.email.label')" :placeholder="$t('leadForm.fields.email.placeholder')" type="email" v-model="leadForm.email" requireText="*" />
+                        <InputBase  :label="$t('leadForm.fields.email.label')" :placeholder="$t('leadForm.fields.email.placeholder')" type="email" v-model="leadForm.email" requireText="*" />
+                        <InputBase class="md:col-span-2"  maxLength="500"  :label="$t('leadForm.fields.description.label')" :placeholder="$t('leadForm.fields.description.placeholder')" type="textarea" v-model="leadForm.description" requireText="*" />
+
                     </div>
 
                     <div class="flex justify-center">
@@ -137,20 +138,20 @@ const crmStore = useCrmStore()
 // Define types for form and API response
 interface LeadForm {
     name: string
-    lastname: string
     email: string
     company?: string
     phone?: string
     message?: string
     city?: string
+    description?:string
 }
 
 const leadForm = reactive<LeadForm>({
     name: '',
-    lastname: '',
     email: '',
     company: '',
     phone: '',
+    description:''
 })
 
 const formMessage = ref("")
@@ -161,7 +162,7 @@ const submitLead = async (): Promise<void> => {
     formMessage.value = ''
 
     // ✅ 1. Required fields check
-    if (!leadForm.name || !leadForm.lastname || !leadForm.email) {
+    if (!leadForm.name || !leadForm.company || !leadForm.description || !leadForm.email || !leadForm.phone) {
         formMessage.value = $t('leadForm.missingFields') // e.g., "Please fill in all required fields."
         loading.value = false
         return

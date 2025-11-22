@@ -25,7 +25,7 @@ export const useCrmStore = defineStore('crm', () => {
     formMessage.value = ''
 
     try { 
-      const res: ApiResponse = await $fetch('https://land.daartads.com/api/crm/create-leads', {
+      const res: ApiResponse = await $fetch('http://localhost:5000/api/crm/create-leads', {
         method: 'POST',
         body: leadForm
       })

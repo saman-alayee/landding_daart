@@ -21,7 +21,7 @@
     "title": "No experience or big budget needed",
     "desc": "New to online advertising? Learn how Daart Ads helps you reach your advertising goals without the high costs of traditional solutions.",
     "imageAlt": "No experience or big budget needed",
-    "button":"See More"
+    "button": "See More"
   },
   "info2": {
     "title": "Maximize Your Reach with Google Ads",
@@ -155,6 +155,12 @@
         "label": "Phone",
         "placeholder": "Enter your phone number"
       },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter description",
+        "requireText": "*",
+        "help": "Please provide a detailed description"
+      },
       "message": {
         "label": "Your Message",
         "placeholder": "Write your message"
@@ -182,7 +188,7 @@
     },
     "copyright": "All material and intellectual rights of Daart website belong to Creative Future Solutions Co. (Copyright 2016 – {year})"
   },
-    "googleAds": {
+  "googleAds": {
     "hero": {
       "logoAlt": "Google Ads",
       "title": "Google",
