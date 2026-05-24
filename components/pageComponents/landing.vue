@@ -17,42 +17,87 @@
             <ServicesSections />
         </div>
 
-                <!-- ✨ Elegant Accordion Section -->
+        <!-- ✨ Elegant Accordion Section -->
         <div class="mt-20 px-6 lg:px-32" data-aos="fade-up" data-aos-delay="index * 150">
-            <h2 class="text-3xl font-bold text-center mb-10">
-                Frequently Asked <span class="purple-gradient-text">Questions</span>
+            <h2 class="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">
+                Frequently Asked
+                <span class="purple-gradient-text">Questions</span>
             </h2>
 
-            <div v-for="(faq, index) in faqs" :key="index"
-                class="relative mb-4 overflow-hidden rounded-2xl border border-transparent bg-white/60 backdrop-blur-md transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group"
-                :class="{ 'ring-2 ring-blue-400/40': faq.open }">
-                <button class="w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none"
-                    @click="toggleAccordion(index)">
+            <div
+                v-for="(faq, index) in faqs"
+                :key="index"
+                class="relative mb-4 overflow-hidden rounded-2xl
+                border border-gray-200/50 dark:border-white/10
+                bg-white/60 dark:bg-white/5
+                backdrop-blur-md
+                transition-all duration-500
+                hover:shadow-xl dark:hover:shadow-blue-500/10
+                hover:-translate-y-1 group"
+                :class="{ 'ring-2 ring-blue-400/40': faq.open }"
+            >
+                <button
+                    class="w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none"
+                    @click="toggleAccordion(index)"
+                >
                     <div class="flex items-center gap-3">
                         <div
-                            class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-tr from-blue-500 to-purple-500 text-white group-hover:scale-105 transition-transform duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            class="w-10 h-10 rounded-xl flex items-center justify-center
+                            bg-gradient-to-tr from-blue-500 to-purple-500
+                            text-white group-hover:scale-105
+                            transition-transform duration-500"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="2"
                                 stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                             </svg>
                         </div>
+
                         <span
-                            class="text-lg font-semibold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300">
+                            class="text-lg font-semibold
+                            text-gray-900 dark:text-gray-100
+                            group-hover:text-transparent
+                            group-hover:bg-clip-text
+                            group-hover:bg-gradient-to-r
+                            from-blue-600 to-purple-600
+                            dark:from-blue-400 dark:to-purple-400
+                            transition-all duration-300"
+                        >
                             {{ faq.question }}
                         </span>
                     </div>
+
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 transform transition-transform duration-500 text-gray-500 group-hover:text-blue-600"
-                        :class="{ 'rotate-180': faq.open }" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        class="w-6 h-6 transform transition-transform duration-500
+                        text-gray-500 dark:text-gray-400
+                        group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                        :class="{ 'rotate-180': faq.open }"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M19 9l-7 7-7-7"/>
                     </svg>
                 </button>
 
                 <transition name="accordion">
-                    <div v-if="faq.open"
-                        class="px-6 pb-6 mt-4 text-gray-700 leading-relaxed border-t border-gray-200/60 bg-gradient-to-r from-blue-50/30 to-purple-50/30">
-                        <p class="mt-2 text-base">
+                    <div
+                        v-if="faq.open"
+                        class="px-6 pb-6 mt-4
+                        text-gray-700 dark:text-gray-300
+                        leading-relaxed
+                        border-t border-gray-200/60 dark:border-white/10
+                        bg-gradient-to-r
+                        from-blue-50/30 to-purple-50/30
+                        dark:from-blue-900/10 dark:to-purple-900/10"
+                    >
+                        <p class="mt-2 text-base dark:text-gray-300">
                             {{ faq.answer }}
                         </p>
                     </div>
@@ -62,32 +107,67 @@
 
 
         <!-- 📊 Statistics Section -->
-        <div class="relative mt-32 py-20 bg-gradient-to-r from-blue-50 via-white to-purple-50" data-aos="fade-up"
-            data-aos-duration="1000">
+        <div
+            class="relative mt-32 py-20
+            bg-gradient-to-r
+            from-blue-50 via-white to-purple-50
+            dark:from-slate-950
+            dark:via-gray-900
+            dark:to-indigo-950
+            transition-all duration-700"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+        >
             <div class="max-w-6xl mx-auto px-6 text-center">
-                <!-- Section Title -->
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-10" data-aos="fade-up" data-aos-delay="100">
-                    Our <span class="purple-gradient-text">Impact in Numbers</span>
+
+                <h2
+                    class="text-3xl lg:text-4xl font-bold
+                    text-gray-900 dark:text-white
+                    mb-10"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+                    Our
+                    <span class="purple-gradient-text">
+                        Impact in Numbers
+                    </span>
                 </h2>
 
-                <!-- Stats Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8" data-aos="zoom-in-up"
-                    data-aos-delay="200">
-                    <div v-for="(stat, i) in stats" :key="i"
-                        class="flex flex-col items-center justify-center p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500 transform">
-                        <!-- Icon with subtle hover animation -->
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
+                    data-aos="zoom-in-up"
+                    data-aos-delay="200"
+                >
+                    <div
+                        v-for="(stat, i) in stats"
+                        :key="i"
+                        class="flex flex-col items-center justify-center p-6
+                        bg-white/60 dark:bg-white/5
+                        backdrop-blur-md
+                        rounded-2xl
+                        border border-transparent dark:border-white/10
+                        shadow-md dark:shadow-blue-500/5
+                        hover:shadow-xl hover:-translate-y-2
+                        transition-all duration-500 transform"
+                    >
                         <div
-                            class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-tr from-blue-500 to-purple-500 text-white mb-4 shadow-lg transform transition-transform duration-500 hover:scale-110 animate-bounce-slow">
+                            class="w-12 h-12 flex items-center justify-center
+                            rounded-xl
+                            bg-gradient-to-tr
+                            from-blue-500 to-purple-500
+                            text-white mb-4
+                            shadow-lg
+                            transform transition-transform duration-500
+                            hover:scale-110 animate-bounce-slow"
+                        >
                             <component :is="stat.icon" class="w-6 h-6" />
                         </div>
 
-                        <!-- Stat Value -->
-                        <h3 class="text-4xl font-extrabold text-gray-900 mb-1 animate-fade-up">
+                        <h3 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-1 animate-fade-up">
                             {{ stat.value }}
                         </h3>
 
-                        <!-- Stat Label -->
-                        <p class="text-gray-600 text-sm font-medium animate-fade-up-delay">
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium animate-fade-up-delay">
                             {{ stat.label }}
                         </p>
                     </div>
@@ -95,45 +175,97 @@
             </div>
         </div>
 
-        <!-- user comments -->
-        <div class="py-10 bg-white" data-aos="fade-up" data-aos-duration="1000">
+
+        <!-- 💬 User comments -->
+        <div
+            class="py-10 bg-white dark:bg-gray-950 transition-colors duration-700"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+        >
             <div class="max-w-6xl mx-auto px-6 text-center">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-12" data-aos="fade-up">
-                    What Our <span class="purple-gradient-text">Customers Say</span>
+
+                <h2
+                    class="text-3xl lg:text-4xl font-bold
+                    text-gray-900 dark:text-white
+                    mb-12"
+                    data-aos="fade-up"
+                >
+                    What Our
+                    <span class="purple-gradient-text">
+                        Customers Say
+                    </span>
                 </h2>
 
-                <Swiper :slides-per-view="2" :space-between="30" :loop="true" :autoplay="{ delay: 3000 }"
-                    :pagination="{ clickable: true }" :breakpoints="{
+                <Swiper
+                    :slides-per-view="2"
+                    :space-between="30"
+                    :loop="true"
+                    :autoplay="{ delay: 3000 }"
+                    :pagination="{ clickable: true }"
+                    :breakpoints="{
                         320: { slidesPerView: 1, spaceBetween: 15 },
                         768: { slidesPerView: 2, spaceBetween: 20 },
                         1024: { slidesPerView: 2, spaceBetween: 30 }
-                    }" class="testimonial-swiper">
-                    <SwiperSlide v-for="(testimonial, i) in testimonials" :key="'testimonial-' + i"
-                        class="relative p-8 sm:p-10 m-4 sm:m-6 bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
-                        <!-- ⭐ Quote Icon -->
+                    }"
+                    class="testimonial-swiper"
+                >
+                    <SwiperSlide
+                        v-for="(testimonial, i) in testimonials"
+                        :key="'testimonial-' + i"
+                        class="relative p-8 sm:p-10 m-4 sm:m-6
+                        bg-white/80 dark:bg-white/5
+                        backdrop-blur-xl
+                        border border-gray-100 dark:border-white/10
+                        rounded-3xl
+                        shadow-lg dark:shadow-blue-500/5
+                        hover:shadow-2xl
+                        transition-all duration-500
+                        flex flex-col h-full"
+                    >
+                        <!-- Quote Icon -->
                         <div
-                            class="absolute -top-6 left-6 w-12 h-12 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                stroke="white" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12h.01M15 12h.01M7 8h10a2 2 0 012 2v8a2 2 0 01-2 2H7a2 2 0 01-2-2v-8a2 2 0 012-2z" />
+                            class="absolute -top-6 left-6 w-12 h-12 rounded-full
+                            bg-gradient-to-tr from-blue-500 to-purple-500
+                            flex items-center justify-center shadow-md"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                stroke="white"
+                                class="w-6 h-6"
+                            >
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 12h.01M15 12h.01M7 8h10a2 2 0 012 2v8a2 2 0 01-2 2H7a2 2 0 01-2-2v-8a2 2 0 012-2z"/>
                             </svg>
                         </div>
 
-                        <!-- ✍️ Testimonial Quote -->
-                        <p class="text-gray-700 text-sm italic mb-2 sm:mb-4 leading-relaxed flex-1">
+                        <p class="text-gray-700 dark:text-gray-300 text-sm italic mb-2 sm:mb-4 leading-relaxed flex-1">
                             “{{ testimonial.quote }}”
                         </p>
 
-                        <!-- 👤 Customer Info -->
                         <div class="flex items-center gap-4 mt-auto">
-                            <img :src="testimonial.image" :alt="testimonial.name"
-                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shadow-md ring-2 ring-purple-200" />
+                            <img
+                                :src="testimonial.image"
+                                :alt="testimonial.name"
+                                class="w-12 h-12 sm:w-14 sm:h-14
+                                rounded-full object-cover shadow-md
+                                ring-2 ring-purple-200
+                                dark:ring-purple-500/40"
+                            />
+
                             <div class="text-left">
-                                <h4 class="font-semibold text-gray-900 text-sm sm:text-lg">{{ testimonial.name }}</h4>
-                                <p class="text-xs sm:text-sm text-gray-500">{{ testimonial.position }}</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-lg">
+                                    {{ testimonial.name }}
+                                </h4>
+
+                                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                                    {{ testimonial.position }}
+                                </p>
                             </div>
                         </div>
+
                     </SwiperSlide>
                 </Swiper>
             </div>
@@ -167,26 +299,26 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const faqs = ref([
-    {
-        question: 'How does Daart Ads use AI to improve campaigns?',
-        answer: 'Daart Ads analyzes your ad performance in real time and automatically adjusts bids, targeting, and creatives for the best results.',
-        open: false,
-    },
-    {
-        question: 'Can I use Daart Ads if I have no experience?',
-        answer: 'Absolutely! Daart Ads is designed for everyone — even if you have no background in marketing or advertising.',
-        open: false,
-    },
-    {
-        question: 'Which platforms can I advertise on?',
-        answer: 'You can launch ads across Google, Meta, Instagram, TikTok, and more — all from one dashboard.',
-        open: false,
-    },
-    {
-        question: 'Is there a free trial available?',
-        answer: 'Yes! We offer a free plan so you can explore Daart Ads before committing to a subscription.',
-        open: false,
-    },
+{
+    question: 'How does Daart Ads use AI to improve campaigns?',
+    answer: 'Daart Ads uses advanced AI technology to continuously analyze campaign performance in real time. It automatically evaluates metrics such as clicks, conversions, audience behavior, and engagement patterns. Based on this data, the system intelligently adjusts bidding strategies, audience targeting, and ad creatives to maximize performance. Instead of relying on manual optimization, the AI learns from campaign data over time and helps ensure your ads achieve better results while reducing wasted ad spend.',
+    open: false,
+},
+{
+    question: 'Can I use Daart Ads if I have no experience?',
+    answer: 'Absolutely! Daart Ads is designed with simplicity in mind so anyone can start creating effective advertising campaigns. Whether you are a small business owner, entrepreneur, content creator, or complete beginner, the platform guides you through each step of the process. Smart recommendations, automation features, and an intuitive dashboard help eliminate the complexity of digital marketing, allowing you to launch campaigns confidently without prior advertising knowledge.',
+    open: false,
+},
+{
+    question: 'Which platforms can I advertise on?',
+    answer: 'With Daart Ads, you can manage and launch campaigns across multiple advertising platforms from one centralized dashboard. Supported channels include Google Ads, Meta platforms such as Facebook and Instagram, TikTok, and additional advertising networks. This unified approach saves time, simplifies campaign management, and allows you to reach audiences across different channels without switching between multiple tools and interfaces.',
+    open: false,
+},
+{
+    question: 'Is there a free trial available?',
+    answer: 'Yes! Daart Ads offers a free plan so users can explore the platform and experience its features before committing to a paid subscription. You can test campaign creation tools, explore automation capabilities, and understand how AI optimization works in real-world scenarios. This allows you to evaluate the platform and determine whether it fits your advertising goals before upgrading to advanced plans.',
+    open: false,
+},
 ])
 
 

@@ -49,14 +49,14 @@
       </template>
     </div>
 
-    <p class="text-slate-600 mt-2 text-xs">{{ subtitle }}</p>
-    <p v-if="maxLength" class="text-gray-500 text-xs mt-1">{{ charCount }}/{{ maxLength }}</p>
+    <p class="text-slate-600 mt-2 text-xs dark:text-white">{{ subtitle }}</p>
+    <p v-if="maxLength" class="text-gray-500 text-xs  dark:text-white mt-1">{{ charCount }}/{{ maxLength }}</p>
     <span v-if="error" class="error-message">{{ error }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, computed, ref } from 'vue';
+import {  computed, ref } from 'vue';
 
 const props = defineProps({
   label: String,
