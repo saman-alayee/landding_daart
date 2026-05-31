@@ -3,7 +3,7 @@
     class="relative overflow-hidden py-16 text-gray-700 transition-all duration-500"
     :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'"
   >
-    <!-- 🌫️ Dark Mode Gradient Background (added without removing light mode) -->
+    <!-- 🌫️ Dark Mode Gradient Background -->
     <div
       class="absolute inset-0 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-neutral-900 animate-gradient-flow-dark"
     ></div>
@@ -11,14 +11,14 @@
       class="absolute inset-0 dark:bg-[radial-gradient(circle_at_30%_30%,rgba(30,41,59,0.25),transparent_60%)]"
     ></div>
 
-    <!-- 🌌 Dark Mode Aurora Mist Waves (added without removing light mode) -->
+    <!-- 🌌 Dark Mode Aurora Mist Waves -->
     <div class="absolute inset-0 overflow-hidden">
       <div
         class="absolute w-[150%] h-[200%] dark:bg-gradient-to-r dark:from-indigo-900/30 dark:via-blue-900/30 dark:to-purple-900/30 blur-3xl animate-aurora-sweep-dark"
       ></div>
     </div>
 
-    <!-- 🫧 Dark Mode Floating Blobs (added without removing light mode) -->
+    <!-- 🫧 Dark Mode Floating Blobs -->
     <div
       class="absolute w-[30rem] h-[30rem] rounded-full blur-3xl top-0 left-0 animate-blob-dark dark:bg-indigo-900/30 hidden dark:block"
     ></div>
@@ -26,31 +26,33 @@
       class="absolute w-[24rem] h-[24rem] rounded-full blur-3xl bottom-0 right-0 animate-blob-dark animation-delay-2000 dark:bg-sky-900/28 hidden dark:block"
     ></div>
 
-    <!-- ✨ Dark Mode Floating Particles (added without removing light mode) -->
-    <div
-      v-for="n in 8"
-      :key="'footer-dark-particle-' + n"
-      class="absolute w-2 h-2 rounded-full animate-particle-dark hidden dark:block bg-gradient-to-r from-blue-600 to-indigo-500"
-      :style="{
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        animationDelay: `${n * 0.5}s`,
-        animationDuration: `${5 + Math.random() * 4}s`,
-      }"
-    ></div>
+    <!-- ✨ Dark Mode Floating Particles - FIXED: No random values -->
+    <ClientOnly>
+      <div
+        v-for="n in 8"
+        :key="'footer-dark-particle-' + n"
+        class="absolute w-2 h-2 rounded-full animate-particle-dark hidden dark:block bg-gradient-to-r from-blue-600 to-indigo-500"
+        :style="{
+          top: `${particlePositions[n-1]?.top || 50}%`,
+          left: `${particlePositions[n-1]?.left || 50}%`,
+          animationDelay: `${n * 0.5}s`,
+          animationDuration: `${particlePositions[n-1]?.duration || 7}s`,
+        }"
+      ></div>
+    </ClientOnly>
 
-    <!-- 🎨 Your Original Light Mode Background (KEPT AS IS) -->
+    <!-- 🎨 Your Original Light Mode Background -->
     <div
       class="absolute inset-0 bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 dark:hidden animate-gradient-flow"
     ></div>
 
-    <!-- 💫 Your Original Light Mode Floating Glows (KEPT AS IS) -->
+    <!-- 💫 Your Original Light Mode Floating Glows -->
     <div class="absolute w-64 h-64 bg-blue-300/20 rounded-full blur-3xl top-0 left-0 animate-blob dark:hidden"></div>
     <div
       class="absolute w-80 h-80 bg-purple-300/25 rounded-full blur-3xl bottom-0 right-0 animate-blob animation-delay-2000 dark:hidden"
     ></div>
 
-    <!-- 🌀 Your Original Light Mode Animated Shapes (KEPT AS IS) -->
+    <!-- 🌀 Your Original Light Mode Animated Shapes -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none dark:hidden">
       <div class="absolute w-8 h-8 bg-blue-400/30 rounded-full top-1/3 left-8 animate-float-slow"></div>
       <div
@@ -82,17 +84,16 @@
       <div
         class="flex flex-col items-center md:items-start text-center md:text-left space-y-4"
         :class="{'md:items-end md:text-right': $i18n.locale === 'ar'}"
-        data-aos="fade-right"
       >
         <img
           src="/assets/image/daartLogo.png"
           :alt="$t('footer.logoAlt')"
-          class="w-36 md:w-44 transition-transform duration-500 hover:scale-110 hover:drop-shadow-lg "
+          class="w-36 md:w-44 transition-transform duration-500 hover:scale-110 hover:drop-shadow-lg"
         />
       </div>
 
       <!-- 📍 Contact Info -->
-      <div data-aos="fade-up" data-aos-delay="200">
+      <div>
         <h3
           class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-400 dark:border-blue-500 inline-block pb-1"
         >
@@ -118,11 +119,7 @@
       </div>
 
       <!-- 🌐 Social Links -->
-      <div
-        data-aos="fade-left"
-        data-aos-delay="400"
-        :class="{'md:text-right': $i18n.locale === 'ar', 'md:text-left': $i18n.locale !== 'ar'}"
-      >
+      <div :class="{'md:text-right': $i18n.locale === 'ar', 'md:text-left': $i18n.locale !== 'ar'}">
         <h3 
           class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-400 dark:border-blue-500 inline-block pb-1"
         >
@@ -164,10 +161,8 @@
     <!-- 🌠 Bottom Line -->
     <div
       class="relative mt-16 pt-6 border-t border-blue-200 dark:border-gray-600 text-center text-gray-500 dark:text-gray-400 text-sm z-10"
-      data-aos="fade-up"
-      data-aos-delay="600"
     >
-      <p class="opacity-80">
+      <p class="opacity-80 dark:text-white">
         © {{ new Date().getFullYear() }}
         <span class="text-blue-600 dark:text-blue-400 font-medium">Daart Agency</span> — {{ 'All rights reserved.' }}
       </p>
@@ -177,6 +172,18 @@
 
 <script setup lang="ts">
 import { Linkedin, Instagram } from "lucide-vue-next";
+import { ref, onMounted } from 'vue'
+
+// Generate positions only on client side to prevent hydration mismatch
+const particlePositions = ref<Array<{top: number, left: number, duration: number}>>([])
+
+onMounted(() => {
+  particlePositions.value = Array.from({ length: 8 }, () => ({
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    duration: 5 + Math.random() * 4
+  }))
+})
 </script>
 
 <style scoped>

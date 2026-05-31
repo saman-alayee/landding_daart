@@ -1,344 +1,337 @@
 <template>
-  <!-- 🌟 Combined Component -->
-  <div class="relative">
-    <!-- 🌟 Customer Slider Section -->
-    <section
-      id="customers"
-      class="relative flex flex-col justify-center h-[20rem] py-10 md:py-14 lg:py-10 overflow-hidden transition-all duration-700"
-      data-reveal
-      data-delay="150"
-    >
-      <!-- 🌫️ Shared Gradient Background -->
-      <SharedGradientBackground />
+  <div class="relative w-full py-16 md:py-24">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/20"></div>
+    
+    <!-- Animated Grid Pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f08_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
-      <!-- 💠 Title -->
-      <h5
-        class="flex items-center justify-center gap-4 mt-32 text-center text-gray-600 dark:text-gray-300 font-base text-lg tracking-wide mb-6 relative z-10"
-      >
-        <span class="h-px w-12 sm:w-20 bg-gray-300 dark:bg-gray-600"></span>
-        {{ $t("home.customersTitle") }}
-        <span class="h-px w-12 sm:w-20 bg-gray-300 dark:bg-gray-600"></span>
-      </h5>
+    <!-- Floating Orbs -->
+    <div class="absolute top-20 left-10 w-80 h-80 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-float-slow pointer-events-none"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-300/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-float-slow animation-delay-2000 pointer-events-none"></div>
 
-      <!-- 💫 Swiper -->
-      <div
-        class="relative z-10 px-4"
-        data-reveal
-        data-delay="300"
-      >
-        <swiper
-          :modules="[Autoplay]"
-          :slides-per-view="6"
-          :space-between="10"
-          :loop="true"
-          :autoplay="{ delay: 2000, disableOnInteraction: false }"
-          :pagination="{ clickable: true }"
-          :breakpoints="{
-            320: { slidesPerView: 2, spaceBetween: 10 },
-            640: { slidesPerView: 3, spaceBetween: 10 },
-            768: { slidesPerView: 4, spaceBetween: 15 },
-            1024: { slidesPerView: 6, spaceBetween: 20 }
-          }"
-        >
-          <swiper-slide
-            v-for="item in cardsBrands"
-            :key="'logo-' + item.id"
-            class="flex justify-center"
-          >
-            <div
-              class="relative flex items-center justify-center rounded-xl mt-2 p-2 w-fit transition-all duration-500 hover:scale-125 hover:z-10 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-sm"
-            >
-              <img
-                class="h-8 sm:h-10 lg:h-12 object-contain opacity-80 hover:opacity-100 transition-all duration-500 drop-shadow-md dark:drop-shadow-[0_0_6px_rgba(99,102,241,0.4)]"
-                :src="item.icon"
-                alt="Logo"
-              />
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
-    </section>
-
-    <hr
-      class="h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700"
-    />
-
-    <!-- 🌟 Info Section -->
-    <section
-      class="relative flex flex-col lg:flex-row items-center justify-between gap-10 px-6 lg:px-12 overflow-hidden min-h-[60vh] transition-colors duration-700"
-      :class="$i18n.locale === 'ar' ? 'lg:flex-row-reverse' : ''"
-      data-reveal
-      data-delay="150"
-    >
-      <!-- 🌫️ Shared Gradient Background -->
-      <SharedGradientBackground />
-
-      <!-- ✨ Floating Particles -->
-      <div
-        v-for="n in 8"
-        :key="'info-particle-' + n"
-        class="absolute w-2 h-2 rounded-full animate-particle hidden dark:block bg-gradient-to-r from-blue-600 to-indigo-500"
-        :style="{
-          top: `${Math.random() * 100}%`,
-          left: `${Math.random() * 100}%`,
-          animationDelay: `${n * 0.5}s`,
-          animationDuration: `${5 + Math.random() * 4}s`
-        }"
-      ></div>
-
-      <!-- 🌌 Text Content -->
-      <div
-        class="lg:w-6/12 text-center lg:text-center relative z-10"
-        data-reveal
-        data-delay="300"
-      >
-        <h2
-          class="text-3xl font-extrabold leading-tight mb-4 text-gray-900 dark:text-gray-100 transition-all duration-500 hover:text-indigo-700 dark:hover:text-sky-400"
-        >
-          {{ $t("info2.title") }}
-        </h2>
-        <p
-          class="text-base text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-700 hover:text-gray-800 dark:hover:text-gray-100"
-          data-reveal
-          data-delay="450"
-        >
-          {{ $t("info2.desc") }}
-        </p>
-        <div class="flex justify-center mt-8">
-          <NuxtLink :to="localePath('/service')">
-            <BaseButton
-              size="lg"
-              type="submit"
-              class="bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-400 dark:from-indigo-500 dark:via-blue-500 dark:to-purple-500 text-white border-none hover:shadow-lg hover:shadow-indigo-300/40 dark:hover:shadow-indigo-500/30 transition-transform duration-300 transform hover:scale-110 backdrop-blur-lg relative overflow-hidden"
-              data-reveal
-              data-delay="600"
-            >
-              <span class="relative z-10">{{ $t("info1.button") }}</span>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-white/10 to-indigo-200/10 dark:to-indigo-400/10 opacity-0 hover:opacity-100 animate-glow-sweep"
-              ></div>
-            </BaseButton>
-          </NuxtLink>
+    <div class="relative z-10 mx-auto px-32">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-100/80 to-purple-100/80 dark:from-blue-900/50 dark:to-purple-900/50 backdrop-blur-md border border-blue-200/50 dark:border-blue-800/50 shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 dark:bg-blue-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500 dark:bg-blue-400"></span>
+          </span>
+          <span class="text-sm font-medium text-blue-700 dark:text-blue-300">Our Premium Services</span>
         </div>
+        
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <span class="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+            Powerful Digital 
+          </span>
+          <span class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            Advertising Solutions
+          </span>
+        </h2>
+        
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-6"></div>
+        
+        <p class="text-slate-600 dark:text-slate-400 text-base max-w-2xl mx-auto">
+          Drive measurable growth with our comprehensive suite of advertising and marketing automation platforms
+        </p>
       </div>
 
-      <!-- 🖼️ Image -->
-      <div
-        class="lg:w-6/12 w-full flex justify-center relative z-10"
-        :class="$i18n.locale === 'ar' ? 'lg:text-right' : 'lg:text-left'"
-        data-reveal
-        data-delay="750"
-      >
-        <img
-          src="/assets/image/Google-logo.png"
-          :alt="$t('info2.imageAlt')"
-          class="w-full max-w-md lg:max-w-lg object-contain transform hover:scale-110 hover:rotate-1 transition-all duration-700 ease-out filter dark:brightness-95"
-        />
+      <!-- Tabs Container -->
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+        
+        <!-- Tab Navigation -->
+        <div class="w-full lg:w-80 flex-shrink-0">
+          <div class="sticky top-24">
+            <div class="bg-white/50 dark:bg-slate-800/30 backdrop-blur-sm rounded-2xl p-2 border border-gray-200/50 dark:border-gray-700/50">
+              <div class="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+                <button
+                  v-for="tab in tabs"
+                  :key="tab.id"
+                  @click="activeTab = tab.id"
+                  :class="[
+                    'group w-full px-4 py-3 rounded-xl transition-all duration-300 text-right flex items-center justify-between flex-shrink-0 lg:flex-shrink',
+                    activeTab === tab.id
+                      ? 'bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border-l-4 border-blue-500 dark:border-blue-400 shadow-md'
+                      : 'hover:bg-gray-50 dark:hover:bg-slate-700/50'
+                  ]"
+                >
+                  <div class="flex items-center gap-3">
+                    <!-- Icon - Fixed size -->
+                    <div
+                      :class="[
+                        'w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300',
+                        activeTab === tab.id
+                          ? 'bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg'
+                          : 'bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-gray-400 group-hover:scale-110'
+                      ]"
+                    >
+                      <img :src="tab.icon" class="w-6 h-6 object-contain" :alt="tab.title" />
+                    </div>
+                    
+                    <!-- Title -->
+                    <div class="text-right">
+                      <p
+                        :class="[
+                          'font-semibold text-sm',
+                          activeTab === tab.id
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-gray-700 dark:text-gray-300'
+                        ]"
+                      >
+                        {{ tab.title }}
+                      </p>
+                      <p class="text-xs text-gray-400 dark:text-gray-500 hidden lg:block">
+                        {{ tab.subtitle }}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <!-- Active Indicator -->
+                  <div
+                    v-if="activeTab === tab.id"
+                    class="w-1.5 h-6 rounded-full bg-gradient-to-b from-blue-500 to-cyan-500"
+                  ></div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="flex-1">
+          <Transition name="fade" mode="out-in">
+            <div
+              v-if="currentTab"
+              :key="activeTab"
+              class="bg-white/60 dark:bg-slate-800/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-lg"
+            >
+              <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+                
+                <!-- Content Left - Text Section (Right aligned for RTL) -->
+                <div class="flex-1 text-right">
+                  <!-- Badge -->
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 mb-4">
+                    <span class="text-xs font-medium text-blue-600 dark:text-blue-400">{{ currentTab.badge }}</span>
+                  </div>
+                  
+                  <!-- Title -->
+                  <h3 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-4">
+                    {{ currentTab.content.title }}
+                  </h3>
+                  
+                  <!-- Description -->
+                  <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed mb-6">
+                    {{ currentTab.content.description }}
+                  </p>
+                  
+                  <!-- Features List - Right aligned -->
+                  <div class="space-y-3 mb-6">
+                    <div
+                      v-for="(feature, idx) in currentTab.content.features"
+                      :key="idx"
+                      class="flex items-center gap-3 group cursor-default justify-end"
+                    >
+                      <span class="text-gray-700 dark:text-gray-300 text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {{ feature }}
+                      </span>
+                      <div class="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:scale-150 transition-transform"></div>
+                    </div>
+                  </div>
+                  
+                  <!-- CTA Button -->
+                  <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105">
+                    <span>Learn More</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+                
+                <!-- Content Right - Image (Fixed size container) -->
+                <div class="flex-1 w-full max-w-md mx-auto lg:mx-0">
+                  <div class="relative group">
+                    <!-- Glow Effect -->
+                    <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    
+                    <!-- Image Container - Fixed height and width -->
+                    <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-700 dark:to-slate-800 p-6 flex items-center justify-center min-h-[280px]">
+                      <img
+                        :src="currentTab.content.image"
+                        :alt="currentTab.title"
+                        class="w-full max-w-[280px] h-auto max-h-[220px] object-contain transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </Transition>
+        </div>
+        
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, nextTick } from "vue";
-import banimid from "~/assets/image/banimid-2.png";
-import evano from "~/assets/image/evano-1.png";
-import taghcheh from "~/assets/image/taghcheh-1.png";
-import signal from "~/assets/image/signal.png";
-import okala from "~/assets/image/okala-1.png";
-import khanoomi from "~/assets/image/khanoomi-1.png";
-import fidibo from "~/assets/image/fidibo-1.png";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import { useI18n } from "vue-i18n";
-import BaseButton from "~/components/elements/button/index.vue";
+import { ref, computed } from 'vue'
 
-const { t } = useI18n();
-const localePath = useLocalePath();
+// Import all icons as image paths (keep these small - 24x24 or 32x32)
+import googleIcon from '~/assets/image/Google_Ads_icon.svg.png'
+import facebookIcon from '~/assets/image/facebook-ads.png'
+import instagramIcon from '~/assets/image/social_ads.png'
+import webengageIcon from '~/assets/image/webengage.webp'
 
-const cardsBrands = [
-  { id: 1, icon: banimid },
-  { id: 2, icon: evano },
-  { id: 3, icon: taghcheh },
-  { id: 4, icon: signal },
-  { id: 5, icon: okala },
-  { id: 6, icon: khanoomi },
-  { id: 7, icon: fidibo }
-];
+// Import content images
+import googleImage from '~/assets/image/google_ads_logo.webp'
+import facebookImage from '~/assets/image/facebook-ads.png'
+import socialImage from '~/assets/image/social_ads_logo.png'
+import automationImage from '~/assets/image/web_engage.webp'
 
-// optional dark mode reactive (if you need it elsewhere)
-const isDark = ref(false);
-let mo: MutationObserver | null = null;
-let observer: IntersectionObserver | null = null;
 
-function updateDarkFromHtml() {
-  isDark.value = document.documentElement.classList.contains("dark");
-}
+const activeTab = ref('google')
 
-onMounted(async () => {
-  await nextTick();
-
-  // theme observer (optional — keeps look consistent)
-  updateDarkFromHtml();
-  mo = new MutationObserver(() => updateDarkFromHtml());
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-
-  // IntersectionObserver for reveal animations
-  // select only elements inside this component (scoped)
-  const rootEl = document.querySelector("#customers")?.closest("div.relative") || document.body;
-  const targets = Array.from(rootEl.querySelectorAll("[data-reveal]")) as HTMLElement[];
-
-  if ("IntersectionObserver" in window && targets.length) {
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            // apply visible class with per-element delay support
-            const delayAttr = el.getAttribute("data-delay");
-            if (delayAttr) {
-              const d = Number(delayAttr);
-              el.style.transitionDelay = `${d}ms`;
-            }
-            el.classList.add("reveal-visible");
-            observer?.unobserve(el);
-          }
-        });
-      },
-      { root: null, rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
-    );
-
-    targets.forEach((el) => observer?.observe(el));
-  } else {
-    // fallback: show all
-    targets.forEach((el) => el.classList.add("reveal-visible"));
+const tabs = [
+  {
+    id: 'google',
+    title: 'Google Ads',
+    subtitle: 'Search & Display',
+    icon: googleIcon,
+    badge: 'Search Engine Marketing',
+    content: {
+      title: 'Google Ads - Reach Customers at the Right Moment',
+      description: 'Connect with potential customers across Google Search, Display Network, and YouTube with precision targeting and measurable results.',
+      image: googleImage,
+      features: [
+        'Search Ads - Appear at the top of Google search results',
+        'Display Ads - Visual advertising across millions of websites',
+        'YouTube Ads - Video advertising on the world\'s largest video platform',
+        'Remarketing - Re-engage users who have visited your website',
+        'Performance tracking with detailed analytics and reporting'
+      ]
+    }
+  },
+  {
+    id: 'facebook',
+    title: 'Facebook Ads',
+    subtitle: 'Social Media Marketing',
+    icon: facebookIcon,
+    badge: 'Social Media Advertising',
+    content: {
+      title: 'Facebook Ads - Target with Precision',
+      description: 'Leverage Facebook\'s powerful targeting capabilities to reach your ideal customers across Facebook, Instagram, and Messenger.',
+      image: facebookImage,
+      features: [
+        'Feed Ads - Native ads that blend seamlessly with content',
+        'Story Ads - Full-screen vertical ads for immersive experience',
+        'Reels Ads - Short-form video ads for maximum engagement',
+        'Custom Audiences - Target based on interests, behaviors, and demographics',
+        'Retargeting - Reach users who have interacted with your brand'
+      ]
+    }
+  },
+  {
+    id: 'social',
+    title: 'Social Media Ads',
+    subtitle: 'Multi-Platform',
+    icon: instagramIcon,
+    badge: 'Social Media Management',
+    content: {
+      title: 'Social Media Ads - Multi-Platform Excellence',
+      description: 'Run cohesive advertising campaigns across LinkedIn, Twitter, Pinterest, and TikTok to maximize your brand\'s reach and engagement.',
+      image: socialImage,
+      features: [
+        'LinkedIn Ads - B2B targeting for professional audiences',
+        'TikTok Ads - Short-form video content for viral reach',
+        'Twitter Ads - Real-time engagement with trending topics',
+        'Pinterest Ads - Visual discovery for product inspiration',
+        'Cross-platform analytics and unified reporting'
+      ]
+    }
+  },
+  {
+    id: 'automation',
+    title: 'Marketing Automation',
+    subtitle: 'WebEngage Powered',
+    icon: webengageIcon,
+    badge: 'Marketing Automation',
+    content: {
+      title: 'Marketing Automation - Personalized Customer Journeys',
+      description: 'WebEngage-powered omnichannel automation platform to create personalized experiences across email, push notifications, SMS, and web channels.',
+      image: automationImage,
+      features: [
+        'Email Marketing - Automated personalized email campaigns',
+        'Push Notifications - Real-time engagement on web and mobile',
+        'SMS Campaigns - Direct text message marketing',
+        'Web Push - Browser-based notifications',
+        'Customer Journey Builder - Visual workflow automation',
+        'Segmentation & Personalization - Target based on user behavior'
+      ]
+    }
   }
+]
 
-  // listen storage (if theme toggles via localStorage)
-  window.addEventListener("storage", onStorage);
-});
-
-onBeforeUnmount(() => {
-  if (mo) mo.disconnect();
-  if (observer) observer.disconnect();
-  window.removeEventListener("storage", onStorage);
-});
-
-function onStorage(e: StorageEvent) {
-  if (e.key === "theme") {
-    updateDarkFromHtml();
-  }
-}
+const currentTab = computed(() => {
+  return tabs.find(tab => tab.id === activeTab.value)
+})
 </script>
 
 <style scoped>
-/* ---------------- SHARED background & particle animations (kept) ---------------- */
-@keyframes gradient-flow {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+/* Floating Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
 }
-.animate-gradient-flow {
-  background-size: 200% 200%;
-  animation: gradient-flow 16s ease infinite;
+.animate-float-slow {
+  animation: float-slow 12s ease-in-out infinite;
 }
 
-@keyframes aurora-sweep {
-  0% {
-    transform: translateX(-20%) rotate(0deg);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateX(20%) rotate(2deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateX(-20%) rotate(0deg);
-    opacity: 0.3;
-  }
-}
-.animate-aurora-sweep {
-  animation: aurora-sweep 14s ease-in-out infinite;
-}
-
-@keyframes blob {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -40px) scale(1.1);
-  }
-  66% {
-    transform: translate(-40px, 30px) scale(0.9);
-  }
-}
-.animate-blob {
-  animation: blob 12s infinite ease-in-out;
-  opacity: 0.4;
-}
 .animation-delay-2000 {
   animation-delay: 2s;
 }
 
-/* particles */
-@keyframes particle {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(-25px) scale(1.2);
-    opacity: 0.9;
-  }
-}
-.animate-particle {
-  animation: particle 7s ease-in-out infinite;
+/* Fade Transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Swiper hover zoom */
-.swiper-slide div {
-  transform-origin: center;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-.swiper-slide:hover div {
-  transform: scale(1.25);
-}
-.swiper-slide img {
-  transition: opacity 0.4s ease;
-}
-.swiper-slide:hover img {
-  opacity: 1;
-}
-
-/* ---------------- NEW: Reveal CSS ---------------- */
-/* Base hidden state for revealable elements */
-[data-reveal] {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
-  transform: translateY(18px) scale(0.992);
-  transition: opacity 820ms cubic-bezier(.2,.9,.3,1), transform 820ms cubic-bezier(.2,.9,.3,1);
-  will-change: opacity, transform;
-  transition-delay: 0ms; /* can be overridden inline by script */
+  transform: translateX(10px);
 }
 
-/* Visible state applied by IntersectionObserver */
-.reveal-visible {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
+/* Mobile Scrollbar */
+@media (max-width: 1023px) {
+  .overflow-x-auto {
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    height: 3px;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 10px;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+  }
+  
+  .dark .overflow-x-auto::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  
+  .dark .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #475569;
   }
 }
 </style>

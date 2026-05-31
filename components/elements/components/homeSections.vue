@@ -63,7 +63,7 @@
     ></div>
 
     <!-- 🌟 Main Content (revealed via IntersectionObserver + CSS transitions) -->
-    <div class="relative z-10 max-w-4xl">
+    <div class="relative z-10 mt-16 max-w-4xl">
       <!-- Title -->
       <h1
         data-reveal
@@ -113,15 +113,19 @@
           </BaseButton>
         </NuxtLink>
       </div>
-    </div>
+    </div> <div>
+            <servicesSections />
+        </div>
   </section>
+          <!-- services Sections -->
+       
 </template>
 
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref, nextTick } from 'vue'
 import BaseButton from '~/components/elements/button/index.vue'
 import { useI18n } from 'vue-i18n'
-
+import servicesSections from './servicesSections.vue'
 const { t: $t } = useI18n()
 const localePath = useLocalePath()
 

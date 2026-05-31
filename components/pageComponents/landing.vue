@@ -5,16 +5,20 @@
             <HomeSections />
         </div>
 
+
   
+    <!-- 📊 Statistics Section -->
+        <div>
+            <StatisticsSections/>
+        </div>
 
         <!-- 🌟 Info Section 1 -->
         <div>
             <InfoSections />
         </div>
 
-        <!-- services Sections -->
         <div>
-            <ServicesSections />
+            <SliderSections/>
         </div>
 
         <!-- ✨ Elegant Accordion Section -->
@@ -106,169 +110,11 @@
         </div>
 
 
-        <!-- 📊 Statistics Section -->
-        <div
-            class="relative mt-32 py-20
-            bg-gradient-to-r
-            from-blue-50 via-white to-purple-50
-            dark:from-slate-950
-            dark:via-gray-900
-            dark:to-indigo-950
-            transition-all duration-700"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-        >
-            <div class="max-w-6xl mx-auto px-6 text-center">
+    
 
-                <h2
-                    class="text-3xl lg:text-4xl font-bold
-                    text-gray-900 dark:text-white
-                    mb-10"
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                >
-                    Our
-                    <span class="purple-gradient-text">
-                        Impact in Numbers
-                    </span>
-                </h2>
-
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
-                    data-aos="zoom-in-up"
-                    data-aos-delay="200"
-                >
-                    <div
-                        v-for="(stat, i) in stats"
-                        :key="i"
-                        class="flex flex-col items-center justify-center p-6
-                        bg-white/60 dark:bg-white/5
-                        backdrop-blur-md
-                        rounded-2xl
-                        border border-transparent dark:border-white/10
-                        shadow-md dark:shadow-blue-500/5
-                        hover:shadow-xl hover:-translate-y-2
-                        transition-all duration-500 transform"
-                    >
-                        <div
-                            class="w-12 h-12 flex items-center justify-center
-                            rounded-xl
-                            bg-gradient-to-tr
-                            from-blue-500 to-purple-500
-                            text-white mb-4
-                            shadow-lg
-                            transform transition-transform duration-500
-                            hover:scale-110 animate-bounce-slow"
-                        >
-                            <component :is="stat.icon" class="w-6 h-6" />
-                        </div>
-
-                        <h3 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-1 animate-fade-up">
-                            {{ stat.value }}
-                        </h3>
-
-                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium animate-fade-up-delay">
-                            {{ stat.label }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- 💬 User comments -->
-        <div
-            class="py-10 bg-white dark:bg-gray-950 transition-colors duration-700"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-        >
-            <div class="max-w-6xl mx-auto px-6 text-center">
-
-                <h2
-                    class="text-3xl lg:text-4xl font-bold
-                    text-gray-900 dark:text-white
-                    mb-12"
-                    data-aos="fade-up"
-                >
-                    What Our
-                    <span class="purple-gradient-text">
-                        Customers Say
-                    </span>
-                </h2>
-
-                <Swiper
-                    :slides-per-view="2"
-                    :space-between="30"
-                    :loop="true"
-                    :autoplay="{ delay: 3000 }"
-                    :pagination="{ clickable: true }"
-                    :breakpoints="{
-                        320: { slidesPerView: 1, spaceBetween: 15 },
-                        768: { slidesPerView: 2, spaceBetween: 20 },
-                        1024: { slidesPerView: 2, spaceBetween: 30 }
-                    }"
-                    class="testimonial-swiper"
-                >
-                    <SwiperSlide
-                        v-for="(testimonial, i) in testimonials"
-                        :key="'testimonial-' + i"
-                        class="relative p-8 sm:p-10 m-4 sm:m-6
-                        bg-white/80 dark:bg-white/5
-                        backdrop-blur-xl
-                        border border-gray-100 dark:border-white/10
-                        rounded-3xl
-                        shadow-lg dark:shadow-blue-500/5
-                        hover:shadow-2xl
-                        transition-all duration-500
-                        flex flex-col h-full"
-                    >
-                        <!-- Quote Icon -->
-                        <div
-                            class="absolute -top-6 left-6 w-12 h-12 rounded-full
-                            bg-gradient-to-tr from-blue-500 to-purple-500
-                            flex items-center justify-center shadow-md"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                stroke="white"
-                                class="w-6 h-6"
-                            >
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9 12h.01M15 12h.01M7 8h10a2 2 0 012 2v8a2 2 0 01-2 2H7a2 2 0 01-2-2v-8a2 2 0 012-2z"/>
-                            </svg>
-                        </div>
-
-                        <p class="text-gray-700 dark:text-gray-300 text-sm italic mb-2 sm:mb-4 leading-relaxed flex-1">
-                            “{{ testimonial.quote }}”
-                        </p>
-
-                        <div class="flex items-center gap-4 mt-auto">
-                            <img
-                                :src="testimonial.image"
-                                :alt="testimonial.name"
-                                class="w-12 h-12 sm:w-14 sm:h-14
-                                rounded-full object-cover shadow-md
-                                ring-2 ring-purple-200
-                                dark:ring-purple-500/40"
-                            />
-
-                            <div class="text-left">
-                                <h4 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-lg">
-                                    {{ testimonial.name }}
-                                </h4>
-
-                                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                                    {{ testimonial.position }}
-                                </p>
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                </Swiper>
-            </div>
+   <!-- 💬 User comments -->
+        <div>
+            <CommentSections/>
         </div>
 
        
@@ -282,21 +128,17 @@
 
 <script setup lang="ts">
 import 'aos/dist/aos.css'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css';
-import 'swiper/css/pagination';
+
 import LeadSections from '../elements/components/leadSections.vue'
 import HomeSections from '../elements/components/homeSections.vue'
 import InfoSections from '../elements/components/infoSections.vue'
-import ServicesSections from '../elements/components/servicesSections.vue'
-import CustomerSections from '../elements/components/customerSections.vue';
 import { TrendingUp, Users, Globe2, Sparkles } from 'lucide-vue-next'
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import StatisticsSections from '../elements/components/statisticsSections.vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import CommentSections from '../elements/components/commentSections.vue'
+import SliderSections from '../elements/components/sliderSections.vue'
+
 
 const faqs = ref([
 {
@@ -321,40 +163,6 @@ const faqs = ref([
 },
 ])
 
-
-const testimonials = [
-    {
-        name: "Mohammad Mousavi",
-        position: "Digital Marketing Manager",
-        image: "https://daartagency.com/wp-content/uploads/2021/06/snapp-food.png",
-        quote: "Collaboration with Daart Digital Marketing Company has been full of new and pleasant experiences. The team actively participates in all campaigns, providing full support, follow-up, and interaction. They optimize campaigns and advertising by continuously analyzing data in the best possible way."
-    },
-    {
-        name: "Mehrad Mahrooqi",
-        position: "Digital Marketing Manager",
-        image: "https://daartagency.com/wp-content/uploads/2025/02/اسنپ-مارکت.webp",
-        quote: "Daart Digital Marketing Agency has been with us for a long time and has always offered suitable solutions based on our needs. After interacting with their experts, their prominent role in improving our marketing metrics is clearly visible."
-    },
-    {
-        name: "Alireza Houshmand",
-        position: "Business Development Manager",
-        image: "https://daartagency.com/wp-content/uploads/2021/06/Hamrah-Card.png",
-        quote: "Our collaboration with Hamrah Card and Daart Digital Advertising Agency has lasted three years. This continued cooperation is due to Daart's professional behavior and excellent support, making them one of the best digital marketing agencies."
-    },
-    {
-        name: "Dana Enayati",
-        position: "Digital Marketing Manager",
-        image: "https://daartagency.com/wp-content/uploads/2021/06/Snapp.png",
-        quote: "Our collaboration with Daart Internet Marketing Agency has lasted over four years. The Daart team works tirelessly to solve client problems and has a strong understanding of business needs and key performance indicators."
-    }
-];
-
-const stats = ref([
-    { icon: Users, value: '10K+', label: 'Active Users' },
-    { icon: Globe2, value: '25+', label: 'Countries Reached' },
-    { icon: TrendingUp, value: '95%', label: 'Campaign Success Rate' },
-    { icon: Sparkles, value: '120M+', label: 'Ad Views Delivered' },
-])
 
 
 const toggleAccordion = (index: number) => {

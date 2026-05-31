@@ -14,11 +14,58 @@
           {{ $t('header.home') }}
         </NuxtLink>
 
-        <NuxtLink :to="localePath('/#services')" class="hover:underline">
-          {{ $t('header.services') }}
+        <!-- Services Dropdown -->
+        <div class="relative group">
+          <button class="hover:underline flex items-center gap-1">
+            {{ $t('header.services') }}
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <!-- Dropdown Menu -->
+          <div class="absolute top-full right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <div class="py-2">
+              <NuxtLink 
+                :to="localePath('/services/google-ads')" 
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                @click="closeMenu">
+                Google Ads
+              </NuxtLink>
+              <NuxtLink 
+                :to="localePath('/services/facebook-ads')" 
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                @click="closeMenu">
+                Facebook Ads
+              </NuxtLink>
+              <NuxtLink 
+                :to="localePath('/services/social-media-ads')" 
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                @click="closeMenu">
+                Social Media Ads
+              </NuxtLink>
+              <NuxtLink 
+                :to="localePath('/services/marketing-automation')" 
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                @click="closeMenu">
+                Marketing Automation
+              </NuxtLink>
+              <hr class="my-1 border-gray-200 dark:border-gray-700">
+              <NuxtLink 
+                :to="localePath('/services')" 
+                class="block px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 font-medium"
+                @click="closeMenu">
+                All Services →
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+
+        <NuxtLink :to="localePath('/about')" class="hover:underline">
+          {{ $t('header.about') || 'About Us' }}
         </NuxtLink>
 
-        <NuxtLink :to="localePath('/#contact')" class="hover:underline">
+        <NuxtLink :to="localePath('/contact')" class="hover:underline">
           {{ $t('header.contact') }}
         </NuxtLink>
 
@@ -41,7 +88,6 @@
           :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           class="ml-2 w-9 h-9 rounded-md flex items-center justify-center bg-black/5 hover:bg-black/10 transition dark:bg-white/5 dark:hover:bg-white/10">
           <template v-if="isDark">
-            <!-- Sun icon (light) -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-300" viewBox="0 0 24 24" fill="none"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -49,7 +95,6 @@
             </svg>
           </template>
           <template v-else>
-            <!-- Moon icon (dark) -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700 dark:text-gray-200" viewBox="0 0 24 24"
               fill="none" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -92,18 +137,52 @@
     <transition name="fade">
       <div v-if="menuOpen"
         class="md:hidden flex flex-col items-center bg-white/80 backdrop-blur-md border-t border-black/10 text-black py-3 space-y-3 rounded-b-2xl dark:bg-slate-900/70 dark:text-white dark:border-white/10">
+        
         <NuxtLink :to="localePath('/#home')" @click="closeMenu">
           {{ $t('header.home') }}
         </NuxtLink>
-        <NuxtLink :to="localePath('/#services')" @click="closeMenu">
-          {{ $t('header.services') }}
+
+        <!-- Services Dropdown for Mobile -->
+        <div class="w-full px-4">
+          <button @click="toggleMobileServices" class="w-full flex items-center justify-between py-2">
+            <span>{{ $t('header.services') }}</span>
+            <svg class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': mobileServicesOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <transition name="dropdown">
+            <div v-if="mobileServicesOpen" class="flex flex-col space-y-2 mt-2 mb-2">
+              <NuxtLink :to="localePath('/services/google-ads')" class="py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400" @click="closeMenu">
+                Google Ads
+              </NuxtLink>
+              <NuxtLink :to="localePath('/services/facebook-ads')" class="py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400" @click="closeMenu">
+                Facebook Ads
+              </NuxtLink>
+              <NuxtLink :to="localePath('/services/social-media-ads')" class="py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400" @click="closeMenu">
+                Social Media Ads
+              </NuxtLink>
+              <NuxtLink :to="localePath('/services/marketing-automation')" class="py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400" @click="closeMenu">
+                Marketing Automation
+              </NuxtLink>
+              <hr class="my-1 border-gray-200 dark:border-gray-700">
+              <NuxtLink :to="localePath('/services')" class="py-1.5 text-sm text-blue-600 dark:text-blue-400 font-medium" @click="closeMenu">
+                All Services →
+              </NuxtLink>
+            </div>
+          </transition>
+        </div>
+
+        <NuxtLink :to="localePath('/about')" @click="closeMenu">
+          {{ $t('header.about') || 'About Us' }}
         </NuxtLink>
-        <NuxtLink :to="localePath('/#contact')" @click="closeMenu">
+
+        <NuxtLink :to="localePath('/contact')" @click="closeMenu">
           {{ $t('header.contact') }}
         </NuxtLink>
 
         <!-- Get Started Button for Mobile -->
-        <NuxtLink :to="localePath('/contact')"
+        <NuxtLink :to="localePath('/#contact')"
           class="mt-2 px-5 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-sm font-medium shadow-md hover:scale-105 transition-all duration-300"
           @click="closeMenu">
           {{ $t('header.getStarted') || 'Get Started' }}
@@ -125,21 +204,33 @@ import { useRoute } from 'vue-router'
 import IconButton from '../button/iconButton.vue'
 
 const menuOpen = ref(false)
+const mobileServicesOpen = ref(false)
 const isDark = ref(false)
 const { locale, setLocale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
 // Mobile menu toggle
-const toggleMenu = () => (menuOpen.value = !menuOpen.value)
-const closeMenu = () => (menuOpen.value = false)
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value
+  if (!menuOpen.value) {
+    mobileServicesOpen.value = false
+  }
+}
+const closeMenu = () => {
+  menuOpen.value = false
+  mobileServicesOpen.value = false
+}
+
+const toggleMobileServices = () => {
+  mobileServicesOpen.value = !mobileServicesOpen.value
+}
 
 // Switch language
 const switchLocale = async () => {
   const newLocale = locale.value === 'en' ? 'ar' : 'en'
   await setLocale(newLocale)
 
-  // Navigate to same page in new locale (if your localePath supports it)
   const path = localePath(route.path, newLocale)
   if (path) navigateTo(path)
 
@@ -164,7 +255,6 @@ const toggleTheme = () => {
 }
 
 onMounted(() => {
-  // init theme from localStorage or system preference
   const stored = localStorage.getItem('theme')
   if (stored === 'dark') {
     isDark.value = true
@@ -173,13 +263,11 @@ onMounted(() => {
     isDark.value = false
     applyTheme(false)
   } else {
-    // follow system preference
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     isDark.value = prefersDark
     applyTheme(prefersDark)
   }
 })
-
 </script>
 
 <style scoped>
@@ -191,6 +279,17 @@ onMounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.2s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 /* Gentle glow animation for Get Started button (optional) */

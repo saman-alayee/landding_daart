@@ -62,10 +62,10 @@
             class="relative flex items-center justify-center rounded-xl mt-2 p-2 w-fit transition-all duration-500 hover:scale-125 hover:z-10 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-sm"
           >
             <img
-              class="h-8 sm:h-10 lg:h-12 object-contain opacity-80 hover:opacity-100 transition-all duration-500 drop-shadow-md dark:drop-shadow-[0_0_6px_rgba(99,102,241,0.4)]"
-              :src="item.icon"
-              alt="Logo"
-            />
+  class="company-logo h-8 sm:h-10 lg:h-12 object-contain transition-all duration-500"
+  :src="item.icon"
+  alt="Logo"
+/>
           </div>
         </swiper-slide>
       </swiper>
@@ -84,7 +84,6 @@ import fidibo from '~/assets/image/fidibo-1.png'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
 import { Autoplay } from 'swiper/modules'
 import { onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -166,4 +165,20 @@ const cardsBrands = [
   transition: opacity 0.4s ease;
 }
 .swiper-slide:hover img { opacity: 1; }
+
+.company-logo {
+  opacity: 0.75;
+
+  /* Make all logos same monochrome color */
+  filter: grayscale(100%) brightness(0) invert(65%);
+
+  transition: all 0.4s ease;
+}
+
+.company-logo:hover {
+  opacity: 1;
+
+  /* Optional: colored on hover */
+  filter: none;
+}
 </style>
